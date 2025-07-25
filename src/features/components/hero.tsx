@@ -17,7 +17,7 @@ export function Hero() {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-start justify-between px-6 pt-24 pb-6">
           <h1 className="text-4xl max-w-2xl font-medium text-neutral-darkest leading-14">
-            Unlock Your Child's Potential with Expert Tutoring
+            Unlock Your Child&lsquo;s Potential with Expert Tutoring
           </h1>
           <div className="max-w-2xl">
             <p className="text-lg text-neutral-dark">
