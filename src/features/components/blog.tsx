@@ -33,7 +33,6 @@ interface BlogActionsProps {
   children: ReactNode;
 }
 
-// Main Blog component
 export function Blog({
   children,
   className,

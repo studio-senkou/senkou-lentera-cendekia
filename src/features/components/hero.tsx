@@ -14,8 +14,8 @@ import Image from "next/image";
 export function Hero() {
   return (
     <div className="bg-neutral-lightest">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-start justify-between px-6 pt-24 pb-6">
+      <div className="container mx-auto py-8">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-start justify-between px-6 pt-12 lg:pt-24 pb-6">
           <h1 className="text-4xl max-w-2xl font-medium text-neutral-darkest leading-14">
             Unlock Your Child&lsquo;s Potential with Expert Tutoring
           </h1>
@@ -33,7 +33,7 @@ export function Hero() {
         </div>
 
         {/* Activity Carousel */}
-        <div className="aspect-video mt-16">
+        <div className="aspect-video mt-16 px-8">
           <Carousel
             opts={{
               align: "center",
@@ -44,11 +44,11 @@ export function Hero() {
                 delay: 2000,
               }),
             ]}
-            className="h-full"
+            className="rounded-lg"
           >
             <CarouselContent>
               <CarouselItem>
-                <div className="relative w-full h-full min-h-[700px]">
+                <div className="relative w-full h-full min-h-[300px] xl:min-h-[700px]">
                   <Image
                     src="/images/child-0.jpg"
                     alt="Child studying"
@@ -59,7 +59,7 @@ export function Hero() {
                 </div>
               </CarouselItem>
               <CarouselItem className="h-full">
-                <div className="relative w-full h-full min-h-[700px]">
+                <div className="relative w-full h-full min-h-[300px] xl:min-h-[700px]">
                   <Image
                     src="/images/child-1.jpg"
                     alt="Child reading"
@@ -70,8 +70,10 @@ export function Hero() {
                 </div>
               </CarouselItem>
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <div className="hidden lg:flex">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
           </Carousel>
         </div>
       </div>
