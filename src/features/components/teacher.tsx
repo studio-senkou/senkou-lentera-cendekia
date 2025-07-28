@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
-import type { Component, ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 export interface TeacherCardProps extends ComponentProps<"div"> {
   children?: ReactNode;
@@ -41,7 +41,9 @@ export function TeacherContent({
   );
 }
 
-export interface TeacherTitleProps extends ComponentProps<"h2"> {}
+export interface TeacherTitleProps extends ComponentProps<"h2"> {
+  children?: ReactNode;
+}
 
 export function TeacherTitle({
   className,

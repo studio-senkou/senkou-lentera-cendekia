@@ -44,7 +44,9 @@ export function FooterSection({
   );
 }
 
-interface FooterContactProps extends ComponentProps<"div"> {}
+interface FooterContactProps extends ComponentProps<"div"> {
+  className?: string;
+}
 
 export function FooterContact({ className, ...props }: FooterContactProps) {
   return (
@@ -138,7 +140,9 @@ export function FooterSocial({
   );
 }
 
-interface FooterBottomProps extends ComponentProps<"div"> {}
+interface FooterBottomProps extends ComponentProps<"div"> {
+  className?: string;
+}
 
 export function FooterBottom({ className, ...props }: FooterBottomProps) {
   return (
@@ -215,7 +219,6 @@ export function FooterInformation({
 
 export function FooterLinks({
   links = [],
-  children,
   className,
   ...props
 }: ComponentProps<"div"> & {

@@ -206,9 +206,9 @@ export default function Home() {
           <TestimonialsHeader>
             <TestimonialsTitle>What Our Students Say</TestimonialsTitle>
             <TestimonialsDescription>
-              Don't just take our word for it. Here's what our students and
-              parents have to say about their experience with our tutoring
-              services.
+              Don&apos;t just take our word for it. Here&apos;s what our
+              students and parents have to say about their experience with our
+              tutoring services.
             </TestimonialsDescription>
           </TestimonialsHeader>
 
@@ -310,8 +310,8 @@ export default function Home() {
             Still have questions?
           </h2>
           <p className="text-lg text-neutral-dark w-full max-w-3xl transition-transform">
-            We're here to help! If you have any other questions or need more
-            information, feel free to reach out to us.
+            We&apos;re here to help! If you have any other questions or need
+            more information, feel free to reach out to us.
           </p>
           <Button variant="outline" size="lg" className="mt-4">
             Contact Us

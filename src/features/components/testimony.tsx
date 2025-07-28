@@ -52,18 +52,20 @@ interface TestimonyAuthorProps {
   role?: string;
 }
 
+// Main Testimonials component
 function Testimonials({
   children,
   className,
   ...props
 }: ComponentProps<"section"> & TestimonialsProps) {
   return (
-    <section className={cn(className)} {...props}>
+    <section className={cn("px-6 py-24", className)} {...props}>
       {children}
     </section>
   );
 }
 
+// Testimonials Header
 function TestimonialsHeader({
   children,
   className,
@@ -76,6 +78,7 @@ function TestimonialsHeader({
   );
 }
 
+// Testimonials Title
 function TestimonialsTitle({
   children,
   className,
@@ -94,6 +97,7 @@ function TestimonialsTitle({
   );
 }
 
+// Testimonials Description
 function TestimonialsDescription({
   children,
   className,
@@ -101,10 +105,7 @@ function TestimonialsDescription({
 }: ComponentProps<"p"> & TestimonialsDescriptionProps) {
   return (
     <p
-      className={cn(
-        "text-lg text-neutral-dark w-full max-w-3xl mx-auto transition-transform",
-        className
-      )}
+      className={cn("text-lg text-neutral-dark max-w-3xl mx-auto", className)}
       {...props}
     >
       {children}
@@ -112,6 +113,7 @@ function TestimonialsDescription({
   );
 }
 
+// Testimonials Carousel wrapper
 function TestimonialsCarousel({
   children,
   className,
@@ -138,16 +140,17 @@ function TestimonialsCarousel({
   );
 }
 
+// Individual Testimony component (wrapped in CarouselItem)
 function Testimony({
   children,
   className,
   ...props
 }: ComponentProps<"div"> & TestimonyProps) {
   return (
-    <CarouselItem className="md:basis-1/2">
+    <CarouselItem className="basis-1 md:basis-1/2">
       <div
         className={cn(
-          "flex flex-col lg:flex-row items-center gap-8 max-w-4xl mx-auto p-8 rounded-lg hover:scale-105 translate-y-2 transition-transform duration-300",
+          "flex flex-col lg:flex-row items-center gap-8 max-w-4xl mx-auto p-8 rounded-lg",
           className
         )}
         {...props}
@@ -158,6 +161,7 @@ function Testimony({
   );
 }
 
+// Testimony Content wrapper
 function TestimonyContent({
   children,
   className,
@@ -166,7 +170,7 @@ function TestimonyContent({
   return (
     <div
       className={cn(
-        "flex-1 space-y-4 border border-neutral-lighter p-6 rounded-lg min-w-64 lg:min-w-90 min-h-[300px] h-full flex flex-col justify-between",
+        "flex-1 space-y-4 border border-neutral-lighter p-6 rounded-lg min-h-[300px] h-full flex flex-col justify-between",
         className
       )}
       {...props}
@@ -176,6 +180,7 @@ function TestimonyContent({
   );
 }
 
+// Testimony Image
 function TestimonyImage({
   src,
   alt,
@@ -195,6 +200,7 @@ function TestimonyImage({
   );
 }
 
+// Testimony Quote
 function TestimonyQuote({
   children,
   className,
@@ -203,16 +209,17 @@ function TestimonyQuote({
   return (
     <blockquote
       className={cn(
-        "text-lg italic text-neutral-dark leading-relaxed line-clamp-5",
+        "text-lg italic text-neutral-dark leading-relaxed",
         className
       )}
       {...props}
     >
-      "{children}"
+      &ldquo;{children}&rdquo;
     </blockquote>
   );
 }
 
+// Testimony Author
 function TestimonyAuthor({
   name,
   role,
@@ -221,21 +228,18 @@ function TestimonyAuthor({
 }: ComponentProps<"div"> & TestimonyAuthorProps) {
   return (
     <div className={cn("", className)} {...props}>
-      <p className="font-medium text-neutral-darkest">{name}</p>
+      <p className="font-semibold text-neutral-darkest">{name}</p>
       {role && <p className="text-sm text-neutral-dark">{role}</p>}
     </div>
   );
 }
 
+export { Testimonials, Testimony };
+
 export {
-  Testimonials,
   TestimonialsHeader,
   TestimonialsTitle,
   TestimonialsDescription,
   TestimonialsCarousel,
-  Testimony,
-  TestimonyContent,
-  TestimonyImage,
-  TestimonyQuote,
-  TestimonyAuthor,
 };
+export { TestimonyContent, TestimonyImage, TestimonyQuote, TestimonyAuthor };
