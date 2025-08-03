@@ -8,6 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
 interface TestimonialsProps {
@@ -52,7 +53,6 @@ interface TestimonyAuthorProps {
   role?: string;
 }
 
-// Main Testimonials component
 function Testimonials({
   children,
   className,
@@ -65,7 +65,6 @@ function Testimonials({
   );
 }
 
-// Testimonials Header
 function TestimonialsHeader({
   children,
   className,
@@ -78,7 +77,6 @@ function TestimonialsHeader({
   );
 }
 
-// Testimonials Title
 function TestimonialsTitle({
   children,
   className,
@@ -97,7 +95,6 @@ function TestimonialsTitle({
   );
 }
 
-// Testimonials Description
 function TestimonialsDescription({
   children,
   className,
@@ -113,44 +110,43 @@ function TestimonialsDescription({
   );
 }
 
-// Testimonials Carousel wrapper
 function TestimonialsCarousel({
   children,
   className,
   ...props
 }: ComponentProps<"div"> & TestimonialsCarouselProps) {
   return (
-    <div className={cn("", className)} {...props}>
+    <div className={cn("px-4 sm:px-0", className)} {...props}>
       <Carousel
         opts={{
-          align: "center",
+          align: "start",
           loop: true,
+          slidesToScroll: 1,
         }}
         className="w-full"
         plugins={[
           Autoplay({
-            delay: 3000,
+            delay: 4000,
             stopOnInteraction: false,
           }),
         ]}
       >
-        <CarouselContent className="ml-0">{children}</CarouselContent>
+        <CarouselContent className="-ml-2 md:-ml-4">{children}</CarouselContent>
       </Carousel>
     </div>
   );
 }
 
-// Individual Testimony component (wrapped in CarouselItem)
 function Testimony({
   children,
   className,
   ...props
 }: ComponentProps<"div"> & TestimonyProps) {
   return (
-    <CarouselItem className="basis-1 md:basis-1/2">
+    <CarouselItem className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
       <div
         className={cn(
-          "flex flex-col lg:flex-row items-center gap-8 max-w-4xl mx-auto p-8 rounded-lg",
+          "flex flex-col lg:flex-row items-center gap-4 sm:gap-6 max-w-sm mx-auto p-4 sm:p-6 rounded-lg h-full",
           className
         )}
         {...props}
@@ -161,7 +157,6 @@ function Testimony({
   );
 }
 
-// Testimony Content wrapper
 function TestimonyContent({
   children,
   className,
@@ -170,7 +165,7 @@ function TestimonyContent({
   return (
     <div
       className={cn(
-        "flex-1 space-y-4 border border-neutral-lighter p-6 rounded-lg min-h-[300px] h-full flex flex-col justify-between",
+        "flex-1 space-y-4 border border-neutral-lighter p-6 rounded min-w-32 lg:min-w-sm min-h-[300px] h-full flex flex-col justify-between",
         className
       )}
       {...props}
@@ -180,7 +175,6 @@ function TestimonyContent({
   );
 }
 
-// Testimony Image
 function TestimonyImage({
   src,
   alt,
@@ -200,7 +194,6 @@ function TestimonyImage({
   );
 }
 
-// Testimony Quote
 function TestimonyQuote({
   children,
   className,
@@ -209,17 +202,19 @@ function TestimonyQuote({
   return (
     <blockquote
       className={cn(
-        "text-lg italic text-neutral-dark leading-relaxed",
+        "text-sm sm:text-base italic text-neutral-dark leading-relaxed line-clamp-5 text-center",
         className
       )}
       {...props}
     >
       &ldquo;{children}&rdquo;
+      {/* <Link href="/testimonials/">
+        <a className="text-sm text-blue-500 hover:underline">Read more</a>
+      </Link> */}
     </blockquote>
   );
 }
 
-// Testimony Author
 function TestimonyAuthor({
   name,
   role,
@@ -233,6 +228,16 @@ function TestimonyAuthor({
     </div>
   );
 }
+
+Testimonials.Header = TestimonialsHeader;
+Testimonials.Title = TestimonialsTitle;
+Testimonials.Description = TestimonialsDescription;
+Testimonials.Carousel = TestimonialsCarousel;
+
+Testimony.Content = TestimonyContent;
+Testimony.Image = TestimonyImage;
+Testimony.Quote = TestimonyQuote;
+Testimony.Author = TestimonyAuthor;
 
 export { Testimonials, Testimony };
 

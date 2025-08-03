@@ -113,7 +113,7 @@ Feature.Image = function FeatureImage({
         src={src}
         alt={alt}
         fill
-        className="rounded-lg object-cover"
+        className="rounded-lg object-contain"
         sizes="100%"
       />
     </div>

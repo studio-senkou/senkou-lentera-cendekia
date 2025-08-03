@@ -250,16 +250,29 @@ export function FooterLinks({
 
 export function FooterOverlayContact({}) {
   return (
-    <div className="fixed bottom-8 right-4 z-50">
+    <div className="fixed bottom-8 right-4 z-50 group">
       <button
-        className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary-dark transition-colors"
+        className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary-dark transition-colors cursor-pointer"
         aria-label="Chat with us"
         // onClick={() => alert("Chatbot coming soon!")}
         onClick={() => window.open("https://wa.me/6281234567890", "_blank")}
       >
-        <MessageCircle />
-        Chat Kami
+        <MessageCircle size={18} />
+        <span className="text-sm">Chat Kami</span>
       </button>
+      <div className="absolute bottom-full right-0 mb-2 w-64 bg-white shadow-lg rounded-md pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
+        <div className="flex items-start gap-2 p-3">
+          {/* <MessageCircle className="text-primary mt-1" size={20} /> */}
+          <div>
+            <p className="text-sm text-neutral-800 font-medium">
+              Butuh bantuan?
+            </p>
+            <p className="text-xs text-neutral-600">
+              Hubungi kami lewat chat WhatsApp!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -43,13 +43,30 @@ import {
   FooterBottom,
   FooterOverlayContact,
 } from "@/components/footer";
+import { getTestimonies } from "@/lib/testimony";
+import { getAssetUrl } from "@/utils/asset";
+import { getStaticAssets } from "@/lib/asset";
+import {
+  Facility,
+  FacilityContent,
+  FacilityIcon,
+} from "@/features/components/facility";
+import { AirVent, FlaskConical, User, Video } from "lucide-react";
+import Image from "next/image";
+// import { getArticles } from "@/lib/articles";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const testimonies = await getTestimonies();
+  const assets = await getStaticAssets();
+  // const articles = await getArticles();
+
   return (
     <Fragment>
       <NavbarComponent />
       <div id="hero">
-        <HeroComponent />
+        <HeroComponent assets={assets} />
       </div>
 
       {/* Feature Section */}
@@ -60,27 +77,27 @@ export default function Home() {
         >
           <FeatureComponent.Content>
             <FeatureComponent.Title>
-              Unlock Your Potential with Tailored Tutoring Solutions Just for
-              You
+              Belum Mengenal Kami? Kenali Kami Lebih Dekat!
             </FeatureComponent.Title>
             <FeatureComponent.Description>
-              At our tutoring center, we prioritize your unique learning needs.
-              Our experienced tutor craft personalized learning plans to ensure
-              your success
+              Lentera Cendekia hadir untuk mengatasi permasalahan belajar anak.
+              Kami menciptakan lingkungan belajar yang menyenangkan namun
+              efektif melalui metode <b>"Fun and Meaningful Learning"</b>, yang
+              memastikan siswa memahami konsep dasar, bukan hanya menghafal.
             </FeatureComponent.Description>
-            <FeatureComponent.Plans>
+            {/* <FeatureComponent.Plans>
               <FeatureComponent.Plan
-                title="Personalized Learning Plans"
-                description="We create customized learning plans that cater to your individual needs."
+                title="Rencana Pembelajaran Personal"
+                description="Kami membuat rencana pembelajaran yang disesuaikan dengan kebutuhan Anda secara individu."
               />
               <FeatureComponent.Plan
-                title="Expert Tutors"
-                description="Our tutors are experienced professionals dedicated to helping you succeed."
+                title="Tutor Berpengalaman"
+                description="Tutor kami adalah profesional berpengalaman yang berdedikasi untuk membantu Anda meraih kesuksesan."
               />
-            </FeatureComponent.Plans>
+            </FeatureComponent.Plans> */}
           </FeatureComponent.Content>
           <FeatureComponent.Image
-            src="/images/child-1.jpg"
+            src="/images/about__one.svg"
             alt="Tutoring Solutions"
           />
         </FeatureComponent>
@@ -91,30 +108,31 @@ export default function Home() {
         <BlogComponent className="container mx-auto mt-12">
           <BlogComponent.Header>
             <BlogComponent.Title>
-              Tailored Tutoring Programs for Every Learner
+              Program Bimbingan Belajar yang Disesuaikan untuk Setiap Siswa
             </BlogComponent.Title>
             <BlogComponent.Description>
-              Our tutoring center offers personalized programs across various
-              subjects and grade levels. Whether you need help with math,
-              science, or language arts, we have the right resources for you.
+              Pusat bimbingan belajar kami menawarkan program yang
+              dipersonalisasi di berbagai mata pelajaran dan jenjang. Baik Anda
+              membutuhkan bantuan matematika, sains, atau bahasa, kami memiliki
+              sumber daya yang tepat untuk Anda.
             </BlogComponent.Description>
           </BlogComponent.Header>
 
           <BlogComponent.Cards>
             <BlogComponent.Card
               image="/images/child-0.jpg"
-              title="Comprehensive Subject Offerings for All Grades"
-              description="From elementary to high school, we cover it all."
+              title="Pilihan Mata Pelajaran Lengkap untuk Semua Jenjang"
+              description="Dari SD hingga SMA, kami menyediakan semuanya."
             />
             <BlogComponent.Card
               image="/images/child-1.jpg"
-              title="Expert Tutors Ready to Support Your Journey"
-              description="Our experienced tutors are dedicated to your success."
+              title="Tutor Berpengalaman Siap Mendukung Perjalanan Anda"
+              description="Tutor kami yang berpengalaman berdedikasi untuk kesuksesan Anda."
             />
             <BlogComponent.Card
               image="/images/child-0.jpg"
-              title="Flexible Scheduling to Fit Your Lifestyle"
-              description="We offer convenient session times to accommodate busy schedules."
+              title="Jadwal Fleksibel Sesuai Kebutuhan Anda"
+              description="Kami menawarkan waktu sesi yang fleksibel untuk menyesuaikan jadwal Anda yang sibuk."
             />
           </BlogComponent.Cards>
 
@@ -130,46 +148,78 @@ export default function Home() {
       </div>
 
       {/* Featured Section */}
-      <div className="bg-bright-sun-lightest py-12" id="features-2">
-        <FeatureComponent direction="start" className="container mx-auto my-12">
-          <FeatureComponent.Content>
-            <FeatureComponent.Title>
-              Unlock Your Potential with Tailored Tutoring Solutions Just for
-              You
-            </FeatureComponent.Title>
-            <FeatureComponent.Description>
-              At our tutoring center, we prioritize your unique learning needs.
-              Our experienced tutor craft personalized learning plans to ensure
-              your success
-            </FeatureComponent.Description>
-            <FeatureComponent.Plans>
-              <FeatureComponent.Plan
-                title="Personalized Learning Plans"
-                description="We create customized learning plans that cater to your individual needs."
+      <div className="container mx-auto p-8" id="features-2">
+        <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-3 lg:space-x-6">
+          <div className="flex flex-col w-full gap-3 md:gap-6">
+            <Facility>
+              <FacilityIcon>
+                <div className="p-4 bg-[#E67514]/20 rounded-lg">
+                  <AirVent size={40} color="#E67514" />
+                </div>
+              </FacilityIcon>
+              <FacilityContent
+                title="Full AC & Wifi"
+                description="Kelas dil lengkapi dengan Air Conditioner dan Wifi yang akan menunjang kenyamanan belajar anak"
               />
-              <FeatureComponent.Plan
-                title="Expert Tutors"
-                description="Our tutors are experienced professionals dedicated to helping you succeed."
+            </Facility>
+            <Facility>
+              <FacilityIcon>
+                <div className="p-4 bg-[#212121]/20 rounded-lg">
+                  <FlaskConical size={40} color="#212121" />
+                </div>
+              </FacilityIcon>
+              <FacilityContent
+                title="Praktikum Kelas Offline/Online"
+                description="Terdapat praktikum untuk dapat membantu siswa dalam memahami materi pembelajaran dengan mudah"
               />
-            </FeatureComponent.Plans>
-          </FeatureComponent.Content>
-          <FeatureComponent.Image
-            src="/images/child-1.jpg"
-            alt="Tutoring Solutions"
-          />
-        </FeatureComponent>
+            </Facility>
+          </div>
+          <div className="relative overflow-hidden flex items-end justify-center w-full h-[500px] md:h-full bg-cover bg-center rounded-xl bg-[url('/images/hero.png')] border-[1px] border-neutral-20">
+            <Image
+              src="/images/about__one.svg"
+              alt="mockup1"
+              width={1000}
+              height={1000}
+              className="absolute object-contain w-11/12 top-20 h-fit"
+            />
+          </div>
+          <div className="flex flex-col w-full gap-3 md:gap-6">
+            <Facility>
+              <FacilityIcon>
+                <div className="p-4 bg-[#06923E]/20 rounded-lg">
+                  <User size={40} color="#06923E" />
+                </div>
+              </FacilityIcon>
+              <FacilityContent
+                title="Kelas Eksklusif Pendampingan Ujian Sekolah"
+                description="Membuat kelompok belajar kecil dengan 5-6 anak, yang akan mendapatkan pendampingan khusus untuk memaksimalkan hasil ujian sekolah"
+              />
+            </Facility>
+            <Facility>
+              <FacilityIcon>
+                <div className="p-4 bg-[#03A6A1]/20 rounded-lg">
+                  <Video size={40} color="#03A6A1" />
+                </div>
+              </FacilityIcon>
+              <FacilityContent
+                title="Follow Up"
+                description="Bimbingan via Whatsapp, G-Meet atau perantara lain yang dapat membantu siswa memahami tugas atau pun materi yang diberikan"
+              />
+            </Facility>
+          </div>
+        </div>
       </div>
 
       {/* Blog Section */}
       <BlogComponent className="container mx-auto mt-12">
         <BlogComponent.Header>
           <BlogComponent.Title>
-            Tailored Tutoring Programs for Every Learner
+            Informasi Terbaru dan Tips Belajar
           </BlogComponent.Title>
           <BlogComponent.Description>
-            Our tutoring center offers personalized programs across various
-            subjects and grade levels. Whether you need help with math, science,
-            or language arts, we have the right resources for you.
+            Ikuti blog kami untuk mendapatkan informasi terbaru tentang program
+            bimbingan belajar, tips belajar efektif, dan berita pendidikan
+            lainnya.
           </BlogComponent.Description>
         </BlogComponent.Header>
 
@@ -213,17 +263,17 @@ export default function Home() {
           </TestimonialsHeader>
 
           <TestimonialsCarousel>
-            {testimonials.map((testimonial) => (
+            {testimonies?.map((testimonial) => (
               <Testimony key={testimonial.id}>
                 <TestimonyImage
-                  src={testimonial.image}
-                  alt={testimonial.testimoner}
+                  src={getAssetUrl(testimonial.testimoner_photo)}
+                  alt={testimonial.testimoner_name}
                 />
                 <TestimonyContent>
-                  <TestimonyQuote>{testimonial.quote}</TestimonyQuote>
+                  <TestimonyQuote>{testimonial.testimony_text}</TestimonyQuote>
                   <TestimonyAuthor
-                    name={testimonial.testimoner}
-                    role={testimonial.testimoner_position}
+                    name={testimonial.testimoner_name}
+                    role={testimonial.testimoner_current_position}
                   />
                 </TestimonyContent>
               </Testimony>
@@ -285,7 +335,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container mx-auto my-24 px-8 lg:px-0">
+      <div className="container mx-auto my-24 px-8">
         <div className="flex flex-col items-start mb-12">
           <h2 className="text-4xl font-medium text-neutral-darkest mb-4">
             FAQs

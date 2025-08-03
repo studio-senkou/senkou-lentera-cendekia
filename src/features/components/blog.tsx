@@ -65,7 +65,7 @@ Blog.Title = function BlogTitle({
   return (
     <h2
       className={cn(
-        "text-4xl font-medium text-neutral-darkest mb-4",
+        "text-4xl font-medium text-neutral-darkest mb-4 leading-relaxed max-w-2xl mx-auto",
         className
       )}
       {...props}

@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,10 +14,10 @@ export function Navbar() {
 
   const navigations = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Resources", href: "/resources" },
-    { name: "Contact", href: "/contact" },
+    { name: "Tentang Kami", href: "/about" },
+    { name: "Layanan", href: "/services" },
+    { name: "Artikel", href: "/resources" },
+    { name: "Kontak", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -106,7 +107,7 @@ export function Navbar() {
             </NavbarLink>
           ))}
           <Button variant="primary" className="text-lg px-6 py-5">
-            Join Now
+            Gabung
           </Button>
         </div>
 
@@ -161,8 +162,15 @@ export function NavbarBrand({
 }) {
   return (
     <div
-      className={`text-2xl font-medium transition-colors duration-300 ${textStyle}`}
+      className={`flex items-center gap-3 text-xl font-medium transition-colors duration-300 ${textStyle}`}
     >
+      <Image
+        src="/logo.png"
+        alt="Lentera Cendekia Logo"
+        width={150}
+        height={40}
+        className="h-10 w-auto"
+      />
       Lentera Cendekia
     </div>
   );
