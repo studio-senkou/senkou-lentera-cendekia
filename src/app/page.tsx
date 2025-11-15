@@ -1,9 +1,9 @@
-import { Fragment } from "react";
-import { Navbar as NavbarComponent } from "@/components/navbar";
-import { Hero as HeroComponent } from "@/features/components/hero";
-import { Feature as FeatureComponent } from "@/features/components/feature";
-import { Blog as BlogComponent } from "@/features/components/blog";
-import { Button } from "@/components/ui/button";
+import { Fragment } from 'react'
+import { Navbar as NavbarComponent } from '@/components/navbar'
+import { Hero as HeroComponent } from '@/features/components/hero'
+import { Feature as FeatureComponent } from '@/features/components/feature'
+import { Blog as BlogComponent } from '@/features/components/blog'
+import { Button } from '@/components/ui/button'
 import {
   Testimonials,
   TestimonialsCarousel,
@@ -15,10 +15,10 @@ import {
   TestimonyContent,
   TestimonyImage,
   TestimonyQuote,
-} from "@/features/components/testimony";
-import { testimonials } from "@/data/testimonials";
-import { Banner } from "@/features/components/banner";
-import { teachers } from "@/data/teachers";
+} from '@/features/components/testimony'
+// removed unused import: testimonials (we load testimonies from getTestimonies())
+import { Banner } from '@/features/components/banner'
+import { teachers } from '@/data/teachers'
 import {
   TeacherCard,
   TeacherContent,
@@ -26,14 +26,14 @@ import {
   TeacherImage,
   TeacherSocial,
   TeacherTitle,
-} from "@/features/components/teacher";
+} from '@/features/components/teacher'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { faqs } from "@/data/faqs";
+} from '@/components/ui/accordion'
+import { faqs } from '@/data/faqs'
 import {
   Footer,
   FooterSection,
@@ -42,25 +42,23 @@ import {
   FooterSocial,
   FooterBottom,
   FooterOverlayContact,
-} from "@/components/footer";
-import { getTestimonies } from "@/lib/testimony";
-import { getAssetUrl } from "@/utils/asset";
-import { getStaticAssets } from "@/lib/asset";
+} from '@/components/footer'
+import { getTestimonies } from '@/lib/testimony'
+import { getAssetUrl } from '@/utils/asset'
+import { getStaticAssets } from '@/lib/asset'
 import {
   Facility,
   FacilityContent,
   FacilityIcon,
-} from "@/features/components/facility";
-import { AirVent, FlaskConical, User, Video } from "lucide-react";
-import Image from "next/image";
-// import { getArticles } from "@/lib/articles";
+} from '@/features/components/facility'
+import { AirVent, FlaskConical, User, Video } from 'lucide-react'
+import Image from 'next/image'
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const testimonies = await getTestimonies();
-  const assets = await getStaticAssets();
-  // const articles = await getArticles();
+  const testimonies = await getTestimonies()
+  const assets = await getStaticAssets()
 
   return (
     <Fragment>
@@ -82,8 +80,9 @@ export default async function Home() {
             <FeatureComponent.Description>
               Lentera Cendekia hadir untuk mengatasi permasalahan belajar anak.
               Kami menciptakan lingkungan belajar yang menyenangkan namun
-              efektif melalui metode <b>"Fun and Meaningful Learning"</b>, yang
-              memastikan siswa memahami konsep dasar, bukan hanya menghafal.
+              efektif melalui metode{' '}
+              <b>&quot;Fun and Meaningful Learning&quot;</b>, yang memastikan
+              siswa memahami konsep dasar, bukan hanya menghafal.
             </FeatureComponent.Description>
             {/* <FeatureComponent.Plans>
               <FeatureComponent.Plan
@@ -325,7 +324,7 @@ export default async function Home() {
                   <TeacherDescription>{teacher.description}</TeacherDescription>
                   <TeacherSocial
                     links={Object.entries(teacher.social ?? {}).map(
-                      ([platform, url]) => ({ platform, url })
+                      ([platform, url]) => ({ platform, url }),
                     )}
                   />
                 </TeacherContent>
@@ -377,40 +376,40 @@ export default async function Home() {
             <FooterLinksGroup
               title="Services"
               links={[
-                { label: "Tutoring Programs", href: "/programs" },
-                { label: "Online Learning", href: "/online" },
-                { label: "Test Preparation", href: "/test-prep" },
-                { label: "Academic Support", href: "/support" },
+                { label: 'Tutoring Programs', href: '/programs' },
+                { label: 'Online Learning', href: '/online' },
+                { label: 'Test Preparation', href: '/test-prep' },
+                { label: 'Academic Support', href: '/support' },
               ]}
             />
 
             <FooterLinksGroup
               title="About"
               links={[
-                { label: "Our Story", href: "/about" },
-                { label: "Our Teachers", href: "/teachers" },
-                { label: "Testimonials", href: "/testimonials" },
-                { label: "Contact Us", href: "/contact" },
+                { label: 'Our Story', href: '/about' },
+                { label: 'Our Teachers', href: '/teachers' },
+                { label: 'Testimonials', href: '/testimonials' },
+                { label: 'Contact Us', href: '/contact' },
               ]}
             />
 
             <FooterSocial
               links={[
                 {
-                  platform: "twitter",
-                  url: "https://twitter.com/lenteracendekia",
+                  platform: 'twitter',
+                  url: 'https://twitter.com/lenteracendekia',
                 },
                 {
-                  platform: "facebook",
-                  url: "https://facebook.com/lenteracendekia",
+                  platform: 'facebook',
+                  url: 'https://facebook.com/lenteracendekia',
                 },
                 {
-                  platform: "instagram",
-                  url: "https://instagram.com/lenteracendekia",
+                  platform: 'instagram',
+                  url: 'https://instagram.com/lenteracendekia',
                 },
                 {
-                  platform: "linkedin",
-                  url: "https://linkedin.com/company/lenteracendekia",
+                  platform: 'linkedin',
+                  url: 'https://linkedin.com/company/lenteracendekia',
                 },
               ]}
             />
@@ -422,5 +421,5 @@ export default async function Home() {
         <FooterOverlayContact />
       </Footer>
     </Fragment>
-  );
+  )
 }
