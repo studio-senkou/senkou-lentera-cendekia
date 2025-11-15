@@ -1,18 +1,18 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-    font-family: "Londrina";
-    src: url("/src/assets/fonts/londrina-solid-regular.otf");
+    font-family: 'Londrina';
+    src: url('/src/assets/fonts/londrina-solid-regular.otf');
     font-weight: normal;
     font-size: normal;
 }
 
 @font-face {
-    font-family: "Menco Bold";
-    src: url("/src/assets/fonts/menco-bold.otf");
+    font-family: 'Menco Bold';
+    src: url('/src/assets/fonts/menco-bold.otf');
     font-weight: bold;
     font-size: normal;
 }
