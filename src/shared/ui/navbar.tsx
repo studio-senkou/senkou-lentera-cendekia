@@ -13,12 +13,34 @@ export function Navbar() {
     const [activeSection, setActiveSection] = useState('hero')
 
     const navigations = [
-        { name: 'Home', href: '/' },
-        { name: 'Tentang Kami', href: '/about' },
-        { name: 'Layanan', href: '/services' },
-        { name: 'Artikel', href: '/resources' },
-        { name: 'Kontak', href: '/contact' },
+        { name: 'Home', href: '/', section: 'hero' },
+        { name: 'Tentang Kami', href: '/', section: 'features' },
+        { name: 'Layanan', href: '/', section: 'blog' },
+        { name: 'Pengajar', href: '/', section: 'teachers' },
+        { name: 'Artikel', href: '/articles' },
     ]
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            const offset = 80 // navbar height
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            })
+        }
+    }
+
+    const handleNavClick = (e: React.MouseEvent, nav: typeof navigations[0]) => {
+        if (nav.section && window.location.pathname === '/') {
+            e.preventDefault()
+            scrollToSection(nav.section)
+            setIsOpen(false)
+        }
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -73,13 +95,18 @@ export function Navbar() {
     }
 
     return (
-        <nav className={`sticky top-0 z-50 border-b border-neutral-lighter/70 transition-all duration-300 ${getNavbarStyle()}`}>
+        <nav className={`sticky top-0 z-50 border-b border-neutral-light/30 backdrop-blur-lg bg-white/80 transition-all duration-300`}>
             <div className="container mx-auto flex items-center justify-between px-6 py-4">
                 <NavbarBrand textStyle={getTextStyle()} />
 
                 <div className="hidden lg:flex lg:items-center space-x-6">
                     {navigations.map((nav) => (
-                        <NavbarLink key={nav.name} href={nav.href} textStyle={getTextStyle()}>
+                        <NavbarLink 
+                            key={nav.name} 
+                            href={nav.href} 
+                            textStyle={getTextStyle()}
+                            onClick={(e) => handleNavClick(e, nav)}
+                        >
                             {nav.name}
                         </NavbarLink>
                     ))}
@@ -101,7 +128,11 @@ export function Navbar() {
                 <div className={cn('lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-lighter/50', getNavbarStyle())}>
                     <div className="container mx-auto px-6 py-4 space-y-4">
                         {navigations.map((nav) => (
-                            <NavbarMobileLink key={nav.name} href={nav.href} onClick={() => setIsOpen(false)}>
+                            <NavbarMobileLink 
+                                key={nav.name} 
+                                href={nav.href} 
+                                onClick={(e) => handleNavClick(e, nav)}
+                            >
                                 {nav.name}
                             </NavbarMobileLink>
                         ))}
@@ -124,15 +155,15 @@ export function NavbarBrand({ textStyle = 'text-neutral-darkest' }: { textStyle?
     )
 }
 
-export function NavbarLink({ href, children, textStyle = 'text-neutral-800' }: { href: string; children: React.ReactNode; textStyle?: string }) {
+export function NavbarLink({ href, children, textStyle = 'text-neutral-800', onClick }: { href: string; children: React.ReactNode; textStyle?: string; onClick?: (e: React.MouseEvent) => void }) {
     return (
-        <Link href={href} className={`text-lg hover:opacity-70 transition-all duration-300 ${textStyle}`}>
+        <Link href={href} onClick={onClick} className={`text-lg hover:opacity-70 transition-all duration-300 ${textStyle}`}>
             {children}
         </Link>
     )
 }
 
-export function NavbarMobileLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
+export function NavbarMobileLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: (e: React.MouseEvent) => void }) {
     return (
         <Link href={href} onClick={onClick} className="block text-lg text-neutral-800 hover:text-neutral-600 transition-colors py-2">
             {children}

@@ -15,6 +15,7 @@ import {
     TestimonyContent,
     TestimonyImage,
     TestimonyQuote,
+    TestimonyReadMore,
 } from '@/features/home/components/testimony'
 import { Banner } from '@/features/home/components/banner'
 import { teachers } from '@/entities/teachers'
@@ -23,7 +24,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { faqs } from '@/entities/faqs'
 import { Footer, FooterSection, FooterContact, FooterLinksGroup, FooterSocial, FooterBottom, FooterOverlayContact } from '@/shared/ui/footer'
 import { getTestimonies } from '@/shared/lib/testimony'
-import { getAssetUrl, getStaticAssets } from '@/shared/lib/asset'
+import { getStaticAssets } from '@/shared/lib/asset'
 import { Facility, FacilityContent, FacilityIcon } from '@/features/home/components/facility'
 import { AirVent, FlaskConical, User, Video } from 'lucide-react'
 import Image from 'next/image'
@@ -60,37 +61,37 @@ export default async function HomePage() {
             <div id="blog">
                 <BlogComponent className="container mx-auto mt-12">
                     <BlogComponent.Header>
-                        <BlogComponent.Title>Program Bimbingan Belajar yang Disesuaikan untuk Setiap Siswa</BlogComponent.Title>
+                        <BlogComponent.Title>Solusi Belajar Terbaik untuk Semua Jenjang</BlogComponent.Title>
                         <BlogComponent.Description>
-                            Pusat bimbingan belajar kami menawarkan program yang dipersonalisasi di berbagai mata pelajaran dan jenjang. Baik Anda
-                            membutuhkan bantuan matematika, sains, atau bahasa, kami memiliki sumber daya yang tepat untuk Anda.
+                            Kami menawarkan program bimbingan belajar yang personal untuk SD, SMP, hingga SMA. 
+                            Apa pun kebutuhan belajarmu—matematika, sains, atau bahasa—lami siap membantumu meraih prestasi terbaik.
                         </BlogComponent.Description>
                     </BlogComponent.Header>
 
                     <BlogComponent.Cards>
                         <BlogComponent.Card
                             image="/images/child-0.jpg"
-                            title="Pilihan Mata Pelajaran Lengkap untuk Semua Jenjang"
-                            description="Dari SD hingga SMA, kami menyediakan semuanya."
+                            title="Mata Pelajaran Lengkap"
+                            description="Tersedia untuk semua jenjang dari SD hingga SMA, mencakup kurikulum nasional."
                         />
                         <BlogComponent.Card
                             image="/images/child-1.jpg"
-                            title="Tutor Berpengalaman Siap Mendukung Perjalanan Anda"
-                            description="Tutor kami yang berpengalaman berdedikasi untuk kesuksesan Anda."
+                            title="Tutor Berpengalaman & Seru"
+                            description="Pengajar kami tidak hanya ahli, tapi juga asik dan mengerti cara belajar kamu."
                         />
                         <BlogComponent.Card
                             image="/images/child-0.jpg"
-                            title="Jadwal Fleksibel Sesuai Kebutuhan Anda"
-                            description="Kami menawarkan waktu sesi yang fleksibel untuk menyesuaikan jadwal Anda yang sibuk."
+                            title="Jadwal Fleksibel"
+                            description="Pilih waktu belajarmu sendiri agar tetap bisa menyeimbangkan hobi dan prestasi."
                         />
                     </BlogComponent.Cards>
 
                     <BlogComponent.Actions>
                         <Button variant="outline" size="lg">
-                            Learn More
+                            Pelajari Lebih Lanjut
                         </Button>
                         <Button variant="primary" size="lg">
-                            Sign Up
+                            Daftar Sekarang
                         </Button>
                     </BlogComponent.Actions>
                 </BlogComponent>
@@ -140,8 +141,8 @@ export default async function HomePage() {
                                 </div>
                             </FacilityIcon>
                             <FacilityContent
-                                title="Kelas Eksklusif Pendampingan Ujian Sekolah"
-                                description="Membuat kelompok belajar kecil dengan 5-6 anak, yang akan mendapatkan pendampingan khusus untuk memaksimalkan hasil ujian sekolah"
+                                title="Kelas Eksklusif Pendampingan Ujian"
+                                description="Kelompok belajar kecil (5-6 siswa) dengan pendampingan intensif untuk hasil ujian maksimal"
                             />
                         </Facility>
                         <Facility>
@@ -162,37 +163,33 @@ export default async function HomePage() {
             {/* Blog Section */}
             <BlogComponent className="container mx-auto mt-12">
                 <BlogComponent.Header>
-                    <BlogComponent.Title>Informasi Terbaru dan Tips Belajar</BlogComponent.Title>
+                    <BlogComponent.Title>Kabar Terbaru & Tips Belajar</BlogComponent.Title>
                     <BlogComponent.Description>
-                        Ikuti blog kami untuk mendapatkan informasi terbaru tentang program bimbingan belajar, tips belajar efektif, dan berita
-                        pendidikan lainnya.
+                        Ikuti terus update terbaru seputar pendidikan, tips belajar efektif, dan info menarik lainnya dari Lentera Cendekia.
                     </BlogComponent.Description>
                 </BlogComponent.Header>
 
                 <BlogComponent.Cards>
                     <BlogComponent.Card
                         image="/images/child-0.jpg"
-                        title="Comprehensive Subject Offerings for All Grades"
-                        description="From elementary to high school, we cover it all."
+                        title="Cara Mengatur Waktu Belajar yang Efektif"
+                        description="Tips jitu membagi waktu antara sekolah, les, dan bermain agar tetap produktif."
                     />
                     <BlogComponent.Card
                         image="/images/child-1.jpg"
-                        title="Expert Tutors Ready to Support Your Journey"
-                        description="Our experienced tutors are dedicated to your success."
+                        title="Mengenal Gaya Belajar Visual"
+                        description="Apakah kamu tipe visual? Yuk cari tahu cara belajar yang paling pas buat kamu."
                     />
                     <BlogComponent.Card
                         image="/images/child-0.jpg"
-                        title="Flexible Scheduling to Fit Your Lifestyle"
-                        description="We offer convenient session times to accommodate busy schedules."
+                        title="Persiapan Ujian Tanpa Stres"
+                        description="Strategi menghadapi ujian dengan tenang dan percaya diri."
                     />
                 </BlogComponent.Cards>
 
                 <BlogComponent.Actions>
                     <Button variant="outline" size="lg">
-                        Learn More
-                    </Button>
-                    <Button variant="primary" size="lg">
-                        Sign Up
+                        Lihat Artikel Lainnya
                     </Button>
                 </BlogComponent.Actions>
             </BlogComponent>
@@ -200,20 +197,20 @@ export default async function HomePage() {
             <div id="testimonials">
                 <Testimonials className="my-12">
                     <TestimonialsHeader>
-                        <TestimonialsTitle>What Our Students Say</TestimonialsTitle>
+                        <TestimonialsTitle>Kata Mereka Tentang Kami</TestimonialsTitle>
                         <TestimonialsDescription>
-                            Don&apos;t just take our word for it. Here&apos;s what our students and parents have to say about their experience with
-                            our tutoring services.
+                            Jangan hanya percaya kata kami. Dengarkan langsung pengalaman para siswa dan orang tua yang telah bergabung dengan keluarga besar Lentera Cendekia.
                         </TestimonialsDescription>
                     </TestimonialsHeader>
 
                     <TestimonialsCarousel>
                         {testimonies?.map((testimonial) => (
                             <Testimony key={testimonial.id}>
-                                <TestimonyImage src={getAssetUrl(testimonial.testimoner_photo)} alt={testimonial.testimoner_name} />
+                                <TestimonyImage src={testimonial.testimoner_photo || '/images/placeholder.jpg'} alt={testimonial.testimoner_name} />
                                 <TestimonyContent>
                                     <TestimonyQuote>{testimonial.testimony_text}</TestimonyQuote>
                                     <TestimonyAuthor name={testimonial.testimoner_name} role={testimonial.testimoner_current_position} />
+                                    <TestimonyReadMore href={`/testimonials/${testimonial.id}`} />
                                 </TestimonyContent>
                             </Testimony>
                         ))}
@@ -222,22 +219,22 @@ export default async function HomePage() {
             </div>
 
             <Banner
-                title="Join Our Tutoring Center Today!"
-                description="Experience personalized learning with our expert tutors. Sign up now to start your journey towards academic success."
+                title="Bergabunglah Bersama Kami!"
+                description="Rasakan pengalaman belajar yang personal bersama tutor ahli kami. Daftar sekarang dan mulailah perjalanan menuju kesuksesan akademik."
                 className="my-12"
             >
                 <Button variant="primary" size="lg">
-                    Sign Up Now
+                    Daftar Sekarang
                 </Button>
                 <Button variant="outline" size="lg" className="ml-4">
-                    Learn More
+                    Info Lebih Lanjut
                 </Button>
             </Banner>
 
             <div className="my-24 container mx-auto px-8">
                 <Banner
-                    title="Empower Your Learning Journey"
-                    description="Discover the difference personalized tutoring can make. Our dedicated tutors are here to support you every step of the way."
+                    title="Tingkatkan Prestasimu"
+                    description="Temukan perbedaan belajar dengan pendampingan yang tepat. Kami siap mendukung setiap langkahmu."
                     className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-8 rounded-lg"
                     style={{ backgroundImage: "url('/images/child-2.jpg')" }}
                 />
@@ -246,9 +243,9 @@ export default async function HomePage() {
             <div id="teachers" className="bg-bright-sun-lightest py-24 px-8 lg:px-0">
                 <div className="container mx-auto">
                     <div className="flex flex-col items-center text-center mb-12">
-                        <h2 className="text-4xl font-medium text-neutral-darkest mb-4">Meet Our Dedicated Teachers</h2>
+                        <h2 className="text-4xl font-medium text-neutral-darkest mb-4">Temui Pengajar Terbaik Kami</h2>
                         <p className="text-lg text-neutral-dark w-full max-w-3xl mx-auto transition-transform">
-                            Our team of experienced educators is committed to providing the best learning experience for our students.
+                             Tim pengajar kami yang berpengalaman berkomitmen untuk memberikan pengalaman belajar terbaik bagi siswa.
                         </p>
                     </div>
 
@@ -269,9 +266,9 @@ export default async function HomePage() {
 
             <div className="container mx-auto my-24 px-8">
                 <div className="flex flex-col items-start mb-12">
-                    <h2 className="text-4xl font-medium text-neutral-darkest mb-4">FAQs</h2>
+                    <h2 className="text-4xl font-medium text-neutral-darkest mb-4">Pertanyaan Umum (FAQ)</h2>
                     <p className="text-lg text-neutral-dark w-full max-w-3xl transition-transform">
-                        Find answers to common questions about our tutoring services, programs, and more.
+                        Temukan jawaban atas pertanyaan umum tentang layanan bimbingan belajar, program, dan lainnya.
                     </p>
                 </div>
 
@@ -285,12 +282,12 @@ export default async function HomePage() {
                 </Accordion>
 
                 <div className="flex flex-col items-start mt-12">
-                    <h2 className="text-2xl font-medium text-neutral-darkest mb-4">Still have questions?</h2>
+                    <h2 className="text-2xl font-medium text-neutral-darkest mb-4">Masih punya pertanyaan?</h2>
                     <p className="text-lg text-neutral-dark w-full max-w-3xl transition-transform">
-                        We&apos;re here to help! If you have any other questions or need more information, feel free to reach out to us.
+                        Kami siap membantu! Jika kamu memiliki pertanyaan lain atau butuh informasi lebih lanjut, jangan ragu untuk menghubungi kami.
                     </p>
                     <Button variant="outline" size="lg" className="mt-4">
-                        Contact Us
+                        Hubungi Kami
                     </Button>
                 </div>
             </div>

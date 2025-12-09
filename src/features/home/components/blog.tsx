@@ -77,12 +77,12 @@ Blog.Card = function BlogCard({ image, title, description, imageAlt, className, 
     return (
         <div
             className={cn(
-                'bg-white rounded-lg overflow-hidden border border-neutral-lighter hover:shadow-sm transition-shadow duration-300',
+                'group bg-white rounded-lg overflow-hidden border border-neutral-light hover:border-neutral-base transition-colors',
                 className
             )}
             {...props}
         >
-            <div className="relative w-full h-48 bg-gray-200">
+            <div className="relative w-full h-48 bg-neutral-lighter overflow-hidden">
                 <Image
                     src={image}
                     alt={imageAlt || title}
@@ -91,9 +91,9 @@ Blog.Card = function BlogCard({ image, title, description, imageAlt, className, 
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
-            <div className="p-6">
-                <h3 className="text-xl font-medium text-neutral-darkest mb-3">{title}</h3>
-                <p className="text-neutral-dark text-base leading-relaxed">{description}</p>
+            <div className="p-5">
+                <h3 className="text-lg font-semibold text-neutral-darkest mb-2 group-hover:underline">{title}</h3>
+                <p className="text-neutral-base text-sm leading-relaxed line-clamp-2">{description}</p>
             </div>
         </div>
     )

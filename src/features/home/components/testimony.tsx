@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/carousel'
 import { cn } from '@/shared/lib/utils'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { ComponentProps, ReactNode } from 'react'
 
 interface TestimonialsProps {
@@ -46,6 +47,10 @@ interface TestimonyQuoteProps {
 interface TestimonyAuthorProps {
     name: string
     role?: string
+}
+
+interface TestimonyReadMoreProps {
+    href: string
 }
 
 function Testimonials({ children, className, ...props }: ComponentProps<'section'> & TestimonialsProps) {
@@ -105,9 +110,9 @@ function TestimonialsCarousel({ children, className, ...props }: ComponentProps<
 
 function Testimony({ children, className, ...props }: ComponentProps<'div'> & TestimonyProps) {
     return (
-        <CarouselItem className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+        <CarouselItem className="pl-4 md:pl-6 basis-[90%] sm:basis-[80%] md:basis-1/2 lg:basis-1/3">
             <div
-                className={cn('flex flex-col lg:flex-row items-center gap-4 sm:gap-6 max-w-sm mx-auto p-4 sm:p-6 rounded-lg h-full', className)}
+                className={cn('flex flex-row items-stretch gap-4 p-4 h-full', className)}
                 {...props}
             >
                 {children}
@@ -120,7 +125,7 @@ function TestimonyContent({ children, className, ...props }: ComponentProps<'div
     return (
         <div
             className={cn(
-                'flex-1 space-y-4 border border-neutral-lighter p-6 rounded min-w-32 lg:min-w-sm min-h-[300px] h-full flex flex-col justify-between',
+                'flex-1 space-y-4 border border-neutral-lighter p-4 sm:p-5 rounded flex flex-col justify-between min-w-0',
                 className
             )}
             {...props}
@@ -132,29 +137,40 @@ function TestimonyContent({ children, className, ...props }: ComponentProps<'div
 
 function TestimonyImage({ src, alt, className, ...props }: ComponentProps<'div'> & TestimonyImageProps) {
     return (
-        <div className={cn('flex-shrink-0', className)} {...props}>
-            <Image src={src} alt={alt} width={300} height={500} className="rounded-lg object-cover aspect-square" />
+        <div className={cn('flex-shrink-0 w-24 sm:w-32 md:w-36 lg:w-40', className)} {...props}>
+            <div className="relative w-full aspect-square">
+                <Image src={src} alt={alt} fill className="rounded-lg object-cover" />
+            </div>
         </div>
     )
 }
 
 function TestimonyQuote({ children, className, ...props }: ComponentProps<'blockquote'> & TestimonyQuoteProps) {
     return (
-        <blockquote className={cn('text-sm sm:text-base italic text-neutral-dark leading-relaxed line-clamp-5 text-center', className)} {...props}>
+        <blockquote className={cn('flex-1 text-sm italic text-neutral-dark leading-relaxed line-clamp-4', className)} {...props}>
             &ldquo;{children}&rdquo;
-            {/* <Link href="/testimonials/">
-        <a className="text-sm text-blue-500 hover:underline">Read more</a>
-      </Link> */}
         </blockquote>
     )
 }
 
 function TestimonyAuthor({ name, role, className, ...props }: ComponentProps<'div'> & TestimonyAuthorProps) {
     return (
-        <div className={cn('', className)} {...props}>
-            <p className="font-semibold text-neutral-darkest">{name}</p>
-            {role && <p className="text-sm text-neutral-dark">{role}</p>}
+        <div className={cn('pt-3 border-t border-neutral-lighter', className)} {...props}>
+            <p className="font-semibold text-neutral-darkest text-sm">{name}</p>
+            {role && <p className="text-xs text-neutral-base">{role}</p>}
         </div>
+    )
+}
+
+function TestimonyReadMore({ href, className, ...props }: ComponentProps<'a'> & TestimonyReadMoreProps) {
+    return (
+        <Link 
+            href={href} 
+            className={cn('text-xs text-neutral-base hover:text-neutral-darkest underline underline-offset-2 mt-1 inline-block', className)} 
+            {...props}
+        >
+            Baca selengkapnya →
+        </Link>
     )
 }
 
@@ -167,6 +183,7 @@ Testimony.Content = TestimonyContent
 Testimony.Image = TestimonyImage
 Testimony.Quote = TestimonyQuote
 Testimony.Author = TestimonyAuthor
+Testimony.ReadMore = TestimonyReadMore
 
 export { Testimonials, Testimony }
 
@@ -180,4 +197,6 @@ export {
     TestimonyContent,
     TestimonyQuote,
     TestimonyAuthor,
+    TestimonyReadMore,
 }
+
