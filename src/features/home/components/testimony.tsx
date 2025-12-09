@@ -108,15 +108,23 @@ function TestimonialsCarousel({ children, className, ...props }: ComponentProps<
     )
 }
 
+export function TestimonyCard({ children, className, ...props }: ComponentProps<'div'> & TestimonyProps) {
+    return (
+        <div
+            className={cn('flex flex-row items-stretch gap-4 p-4 h-full', className)}
+            {...props}
+        >
+            {children}
+        </div>
+    )
+}
+
 function Testimony({ children, className, ...props }: ComponentProps<'div'> & TestimonyProps) {
     return (
         <CarouselItem className="pl-4 md:pl-6 basis-[90%] sm:basis-[80%] md:basis-1/2 lg:basis-1/3">
-            <div
-                className={cn('flex flex-row items-stretch gap-4 p-4 h-full', className)}
-                {...props}
-            >
+            <TestimonyCard className={className} {...props}>
                 {children}
-            </div>
+            </TestimonyCard>
         </CarouselItem>
     )
 }
