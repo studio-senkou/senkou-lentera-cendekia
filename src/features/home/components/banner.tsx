@@ -10,7 +10,10 @@ interface BannerProps extends ComponentProps<'div'> {
 export function Banner({ className, title, description, children, ...props }: BannerProps) {
     return (
         <section
-            className={cn('flex items-center relative p-12 w-full min-h-96 bg-cover bg-center text-white', className)}
+            className={cn(
+                'flex items-center relative overflow-hidden p-6 md:p-12 w-full min-h-80 md:min-h-96 bg-cover bg-center md:bg-fixed text-white',
+                className
+            )}
             style={{
                 backgroundImage: "url('/images/child-0.jpg')",
             }}

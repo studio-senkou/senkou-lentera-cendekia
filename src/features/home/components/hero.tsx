@@ -7,6 +7,9 @@ import { StaticAssetResponse } from '@/shared/types/response'
 import { getAssetUrl } from '@/shared/lib/asset'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
+import { useCallback } from 'react'
+import { ChevronRight } from 'lucide-react'
+import { sendWhatsappMessage } from '@/shared/utils/contact'
 
 const dummyAssets = [
     { id: 1, name: 'Suasana Belajar', url: 'https://picsum.photos/seed/lentera1/1200/600' },
@@ -23,19 +26,29 @@ export function Hero({ className, assets }: HeroProps) {
     const hasRealAssets = assets && assets.length > 0
     const displayAssets = hasRealAssets ? assets : dummyAssets
 
+    const handleContinueLearning = useCallback(() => {
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+    }, [])
+
     return (
         <div className={cn('bg-white', className)}>
-            <div className="container mx-auto py-16 lg:py-24">
-                <div className="max-w-3xl mx-auto text-center px-6">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-neutral-darkest leading-tight tracking-tight mb-6">
+            <div className="container mx-auto py-12 lg:py-24">
+                <div className="max-w-3xl mx-auto text-center px-4 lg:px-6">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-neutral-darkest leading-tight tracking-tight mb-4 lg:mb-6">
                         Tempat Belajar yang Menyenangkan dan Bermakna
                     </h1>
-                    <p className="text-xl text-neutral-dark leading-relaxed mb-8 max-w-2xl mx-auto">
-                        Lentera Cendekia hadir untuk mendampingi perjalanan akademik anak Anda dengan pendekatan personal dan metode yang terbukti efektif.
+                    <p className="text-lg lg:text-xl text-neutral-dark leading-relaxed mb-6 lg:mb-8 max-w-2xl mx-auto">
+                        Lentera Cendekia hadir untuk mendampingi perjalanan akademik anak Anda dengan pendekatan personal dan metode yang terbukti
+                        efektif.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                        <Button variant="default" size="lg">Mulai Sekarang</Button>
-                        <Button variant="ghost" size="lg">Pelajari Lebih Lanjut →</Button>
+                        <Button variant="default" size="lg" className="w-full sm:w-auto" onClick={sendWhatsappMessage}>
+                            Mulai Sekarang
+                        </Button>
+                        <Button variant="ghost" size="lg" className="w-full sm:w-auto" onClick={handleContinueLearning}>
+                            <span>Pelajari Lebih Lanjut</span>
+                            <ChevronRight className="size-4 ml-2" />
+                        </Button>
                     </div>
                 </div>
 
@@ -57,8 +70,12 @@ export function Hero({ className, assets }: HeroProps) {
                                 <CarouselItem key={index}>
                                     <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
                                         <Image
-                                            src={hasRealAssets ? getAssetUrl((asset as StaticAssetResponse).asset_url) : (asset as typeof dummyAssets[0]).url}
-                                            alt={hasRealAssets ? (asset as StaticAssetResponse).asset_name : (asset as typeof dummyAssets[0]).name}
+                                            src={
+                                                hasRealAssets
+                                                    ? getAssetUrl((asset as StaticAssetResponse).asset_url)
+                                                    : (asset as (typeof dummyAssets)[0]).url
+                                            }
+                                            alt={hasRealAssets ? (asset as StaticAssetResponse).asset_name : (asset as (typeof dummyAssets)[0]).name}
                                             fill
                                             className="object-cover rounded-lg"
                                             priority={index === 0}
@@ -68,8 +85,8 @@ export function Hero({ className, assets }: HeroProps) {
                             ))}
                         </CarouselContent>
                         <div className="hidden lg:flex">
-                            <CarouselPrevious />
-                            <CarouselNext />
+                            <CarouselPrevious className="size-20 -left-28" iconSize="3xl" />
+                            <CarouselNext className="size-20 -right-28" iconSize="3xl" />
                         </div>
                     </Carousel>
                 </div>
@@ -77,4 +94,3 @@ export function Hero({ className, assets }: HeroProps) {
         </div>
     )
 }
-

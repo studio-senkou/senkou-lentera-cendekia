@@ -35,7 +35,7 @@ interface BlogActionsProps {
 
 export function Blog({ children, className, ...props }: ComponentProps<'section'> & BlogProps) {
     return (
-        <section className={cn('px-6 py-24', className)} {...props}>
+        <section className={cn('px-4 lg:px-6 py-12 lg:py-24', className)} {...props}>
             {children}
         </section>
     )
@@ -51,7 +51,7 @@ Blog.Header = function BlogHeader({ children, className, ...props }: ComponentPr
 
 Blog.Title = function BlogTitle({ children, className, ...props }: ComponentProps<'h2'> & BlogTitleProps) {
     return (
-        <h2 className={cn('text-4xl font-medium text-neutral-darkest mb-4 leading-relaxed max-w-2xl mx-auto', className)} {...props}>
+        <h2 className={cn('text-3xl lg:text-4xl font-medium text-neutral-darkest mb-4 leading-relaxed max-w-2xl mx-auto', className)} {...props}>
             {children}
         </h2>
     )
@@ -82,12 +82,12 @@ Blog.Card = function BlogCard({ image, title, description, imageAlt, className, 
             )}
             {...props}
         >
-            <div className="relative w-full h-48 bg-neutral-lighter overflow-hidden">
+            <div className="relative w-full h-96 bg-neutral-lighter overflow-hidden">
                 <Image
                     src={image}
                     alt={imageAlt || title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-[center_5%]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>

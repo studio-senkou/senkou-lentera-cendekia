@@ -123,40 +123,40 @@
     --sidebar-ring: oklch(0.708 0 0);
 
     /* Elegant Color Palette - Black, White, Subtle Yellow Accent */
-    --color-neutral-lightest: #FAFAFA;
-    --color-neutral-lighter: #F2F2F2;
-    --color-neutral-light: #E6E6E6;
+    --color-neutral-lightest: #fafafa;
+    --color-neutral-lighter: #f2f2f2;
+    --color-neutral-light: #e6e6e6;
     --color-neutral-base: #757575;
-    --color-neutral-dark: #4A4A4A;
+    --color-neutral-dark: #4a4a4a;
     --color-neutral-darker: #242424;
     --color-neutral-darkest: #121212;
-    
+
     /* Subtle Yellow Accent - Used Sparingly */
-    --color-bright-sun-lightest: #FFFDF7;
-    --color-bright-sun-lighter: #FFF8E1;
-    --color-bright-sun-light: #FFECB3;
-    --color-bright-sun-base: #FFC107;
-    --color-bright-sun-dark: #FFA000;
-    --color-bright-sun-darker: #FF8F00;
-    --color-bright-sun-darkest: #FF6F00;
-    
+    --color-bright-sun-lightest: #fffdf7;
+    --color-bright-sun-lighter: #fff8e1;
+    --color-bright-sun-light: #ffecb3;
+    --color-bright-sun-base: #ffc107;
+    --color-bright-sun-dark: #ffa000;
+    --color-bright-sun-darker: #ff8f00;
+    --color-bright-sun-darkest: #ff6f00;
+
     /* Warm Accent */
-    --color-yellow-orange-lightest: #FFF8E1;
-    --color-yellow-orange-lighter: #FFECB3;
-    --color-yellow-orange-light: #FFE082;
-    --color-yellow-orange-base: #FFD54F;
-    --color-yellow-orange-dark: #FFCA28;
-    --color-yellow-orange-darker: #FFB300;
-    --color-yellow-orange-darkest: #FFA000;
-    
+    --color-yellow-orange-lightest: #fff8e1;
+    --color-yellow-orange-lighter: #ffecb3;
+    --color-yellow-orange-light: #ffe082;
+    --color-yellow-orange-base: #ffd54f;
+    --color-yellow-orange-dark: #ffca28;
+    --color-yellow-orange-darker: #ffb300;
+    --color-yellow-orange-darkest: #ffa000;
+
     /* Teal Accent */
-    --color-downy-lightest: #E0F2F1;
-    --color-downy-lighter: #B2DFDB;
-    --color-downy-light: #80CBC4;
-    --color-downy-base: #4DB6AC;
-    --color-downy-dark: #26A69A;
+    --color-downy-lightest: #e0f2f1;
+    --color-downy-lighter: #b2dfdb;
+    --color-downy-light: #80cbc4;
+    --color-downy-base: #4db6ac;
+    --color-downy-dark: #26a69a;
     --color-downy-darker: #009688;
-    --color-downy-darkest: #00897B;
+    --color-downy-darkest: #00897b;
 }
 
 .dark {
@@ -202,9 +202,62 @@
     }
 }
 
+@layer utilities {
+    @keyframes float-slow {
+        0%,
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+            transform: translate3d(0, -18px, 0) scale(1.04);
+        }
+    }
+
+    @keyframes float-slower {
+        0%,
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+            transform: translate3d(18px, -12px, 0) scale(1.02);
+        }
+    }
+
+    @keyframes fade-up {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 24px, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .animate-float-slow {
+        animation: float-slow 12s ease-in-out infinite;
+    }
+
+    .animate-float-slower {
+        animation: float-slower 16s ease-in-out infinite;
+    }
+
+    .animate-fade-up {
+        animation: fade-up 700ms ease-out both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-float-slow,
+        .animate-float-slower,
+        .animate-fade-up {
+            animation: none !important;
+        }
+    }
+}
+
 /* Article Content Styling - Medium Style */
 .article-content {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
     font-size: 1.25rem;
     line-height: 1.9;
     color: rgba(41, 41, 41, 1);
@@ -233,7 +286,7 @@
 }
 
 .article-content h1 {
-    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     font-size: 2rem;
     font-weight: 700;
     margin-top: 3.5rem;
@@ -244,7 +297,7 @@
 }
 
 .article-content h2 {
-    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     font-size: 1.625rem;
     font-weight: 700;
     margin-top: 3rem;
@@ -255,7 +308,7 @@
 }
 
 .article-content h3 {
-    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     font-size: 1.375rem;
     font-weight: 600;
     margin-top: 2.5rem;
@@ -265,7 +318,7 @@
 }
 
 .article-content h4 {
-    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     font-size: 1.125rem;
     font-weight: 600;
     margin-top: 2rem;
@@ -412,7 +465,7 @@
 }
 
 .article-content code {
-    font-family: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.85em;
     background-color: rgba(0, 0, 0, 0.05);
     padding: 0.2em 0.4em;
@@ -463,7 +516,7 @@
 }
 
 .article-content figcaption {
-    font-family: "Segoe UI", Roboto, sans-serif;
+    font-family: 'Segoe UI', Roboto, sans-serif;
     font-size: 0.875rem;
     color: var(--color-neutral-base);
     text-align: center;
@@ -486,7 +539,7 @@
 }
 
 .article-content th {
-    font-family: "Segoe UI", Roboto, sans-serif;
+    font-family: 'Segoe UI', Roboto, sans-serif;
     font-weight: 600;
     color: var(--color-neutral-darkest);
     border-bottom: 2px solid var(--color-neutral-dark);

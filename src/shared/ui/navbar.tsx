@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/shared/lib/utils'
 import Image from 'next/image'
+import { sendWhatsappMessage } from '../utils/contact'
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -29,12 +30,12 @@ export function Navbar() {
 
             window.scrollTo({
                 top: offsetPosition,
-                behavior: 'smooth'
+                behavior: 'smooth',
             })
         }
     }
 
-    const handleNavClick = (e: React.MouseEvent, nav: typeof navigations[0]) => {
+    const handleNavClick = (e: React.MouseEvent, nav: (typeof navigations)[0]) => {
         if (nav.section && window.location.pathname === '/') {
             e.preventDefault()
             scrollToSection(nav.section)
@@ -101,16 +102,11 @@ export function Navbar() {
 
                 <div className="hidden lg:flex lg:items-center space-x-6">
                     {navigations.map((nav) => (
-                        <NavbarLink 
-                            key={nav.name} 
-                            href={nav.href} 
-                            textStyle={getTextStyle()}
-                            onClick={(e) => handleNavClick(e, nav)}
-                        >
+                        <NavbarLink key={nav.name} href={nav.href} textStyle={getTextStyle()} onClick={(e) => handleNavClick(e, nav)}>
                             {nav.name}
                         </NavbarLink>
                     ))}
-                    <Button variant="primary" className="text-lg px-6 py-5">
+                    <Button variant="primary" className="text-lg px-6 py-5" onClick={sendWhatsappMessage}>
                         Gabung
                     </Button>
                 </div>
@@ -128,15 +124,11 @@ export function Navbar() {
                 <div className={cn('lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-lighter/50', getNavbarStyle())}>
                     <div className="container mx-auto px-6 py-4 space-y-4">
                         {navigations.map((nav) => (
-                            <NavbarMobileLink 
-                                key={nav.name} 
-                                href={nav.href} 
-                                onClick={(e) => handleNavClick(e, nav)}
-                            >
+                            <NavbarMobileLink key={nav.name} href={nav.href} onClick={(e) => handleNavClick(e, nav)}>
                                 {nav.name}
                             </NavbarMobileLink>
                         ))}
-                        <Button variant="primary" className="w-full text-lg px-6 py-3" onClick={() => setIsOpen(false)}>
+                        <Button variant="primary" className="w-full text-lg px-6 py-3" onClick={sendWhatsappMessage}>
                             Join Now
                         </Button>
                     </div>
@@ -155,7 +147,17 @@ export function NavbarBrand({ textStyle = 'text-neutral-darkest' }: { textStyle?
     )
 }
 
-export function NavbarLink({ href, children, textStyle = 'text-neutral-800', onClick }: { href: string; children: React.ReactNode; textStyle?: string; onClick?: (e: React.MouseEvent) => void }) {
+export function NavbarLink({
+    href,
+    children,
+    textStyle = 'text-neutral-800',
+    onClick,
+}: {
+    href: string
+    children: React.ReactNode
+    textStyle?: string
+    onClick?: (e: React.MouseEvent) => void
+}) {
     return (
         <Link href={href} onClick={onClick} className={`text-lg hover:opacity-70 transition-all duration-300 ${textStyle}`}>
             {children}

@@ -6,7 +6,8 @@ import { Footer, FooterSection, FooterContact, FooterLinksGroup, FooterSocial, F
 import { getTestimonyById } from '@/shared/lib/testimony'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Quote } from 'lucide-react'
+import { Quote } from 'lucide-react'
+import { Button } from '@/shared/ui/button'
 
 interface TestimonyDetailPageProps {
     params: Promise<{ id: string }>
@@ -17,7 +18,9 @@ export async function generateMetadata({ params }: TestimonyDetailPageProps): Pr
     const testimony = await getTestimonyById(id)
     return {
         title: testimony ? `${testimony.testimoner_name} | Testimoni Lentera Cendekia` : 'Testimoni | Lentera Cendekia',
-        description: testimony?.testimony_text?.slice(0, 160) || 'Baca testimoni dari para siswa dan orang tua tentang pengalaman belajar di Lentera Cendekia.',
+        description:
+            testimony?.testimony_text?.slice(0, 160) ||
+            'Baca testimoni dari para siswa dan orang tua tentang pengalaman belajar di Lentera Cendekia.',
     }
 }
 
@@ -31,26 +34,24 @@ export default async function TestimonyDetailPage({ params }: TestimonyDetailPag
         notFound()
     }
 
-    const publishDate = new Date(testimony.created_at).toLocaleDateString('id-ID', { 
+    const publishDate = new Date(testimony.created_at).toLocaleDateString('id-ID', {
         day: 'numeric',
-        month: 'long', 
-        year: 'numeric' 
+        month: 'long',
+        year: 'numeric',
     })
 
     return (
         <Fragment>
             <Navbar />
-            
+
             <article className="min-h-screen">
                 {/* Back Button */}
                 <div className="container mx-auto px-4 lg:px-0 max-w-2xl pt-24 pb-8">
-                    <Link 
-                        href="/#testimonials" 
-                        className="inline-flex items-center gap-2 text-neutral-dark hover:text-neutral-darkest transition-colors group"
-                    >
-                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        <span>Kembali ke Beranda</span>
-                    </Link>
+                    <Button asChild variant="outline" size="lg" className={'w-fit rounded-full'}>
+                        <Link href={'/testimonials'}>
+                            <span>Kembali</span>
+                        </Link>
+                    </Button>
                 </div>
 
                 {/* Testimony Content */}
@@ -68,25 +69,22 @@ export default async function TestimonyDetailPage({ params }: TestimonyDetailPag
                     {/* Author Info */}
                     <div className="flex flex-col items-center gap-4 pt-8 border-t border-neutral-light">
                         <div className="relative w-20 h-20 rounded-full overflow-hidden bg-neutral-lighter">
-                            <Image 
-                                src={testimony.testimoner_photo || `https://ui-avatars.com/api/?name=${testimony.testimoner_name}&background=f2f2f2&color=242424&size=128`} 
+                            <Image
+                                src={
+                                    testimony.testimoner_photo ||
+                                    `https://ui-avatars.com/api/?name=${testimony.testimoner_name}&background=f2f2f2&color=242424&size=128`
+                                }
                                 alt={testimony.testimoner_name}
                                 fill
                                 className="object-cover"
                             />
                         </div>
                         <div className="text-center">
-                            <div className="font-semibold text-lg text-neutral-darkest">
-                                {testimony.testimoner_name}
-                            </div>
+                            <div className="font-semibold text-lg text-neutral-darkest">{testimony.testimoner_name}</div>
                             {testimony.testimoner_current_position && (
-                                <div className="text-neutral-base">
-                                    {testimony.testimoner_current_position}
-                                </div>
+                                <div className="text-neutral-base">{testimony.testimoner_current_position}</div>
                             )}
-                            <div className="text-sm text-neutral-base mt-2">
-                                {publishDate}
-                            </div>
+                            <div className="text-sm text-neutral-base mt-2">{publishDate}</div>
                         </div>
                     </div>
                 </div>

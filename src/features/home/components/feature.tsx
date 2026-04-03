@@ -37,7 +37,7 @@ export function Feature({ direction = 'start', className, children, ...props }: 
     return (
         <section
             className={cn(
-                'flex flex-col gap-8 lg:gap-0 items-center justify-between px-6 pt-24 pb-6',
+                'flex flex-col gap-6 lg:gap-0 items-center justify-between px-4 lg:px-6 py-12 lg:py-24',
                 direction === 'start' ? 'lg:flex-row' : 'lg:flex-row-reverse',
                 className
             )}
@@ -58,7 +58,7 @@ Feature.Content = function FeatureContent({ children, className, ...props }: Com
 
 Feature.Title = function FeatureTitle({ children, className, ...props }: ComponentProps<'h1'> & FeatureTitleProps) {
     return (
-        <h1 className={cn('text-4xl max-w-2xl font-medium text-neutral-darkest leading-14', className)} {...props}>
+        <h1 className={cn('text-3xl lg:text-4xl max-w-2xl font-medium text-neutral-darkest leading-snug lg:leading-tight', className)} {...props}>
             {children}
         </h1>
     )

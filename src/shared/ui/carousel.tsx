@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/button'
@@ -29,6 +29,28 @@ type CarouselContextProps = {
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
+
+type CarouselControlProps = React.ComponentProps<typeof Button> & {
+    iconSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+}
+
+function getIconSizeClass(iconSize: NonNullable<CarouselControlProps['iconSize']>) {
+    switch (iconSize) {
+        case 'sm':
+            return 'size-3'
+        case 'lg':
+            return 'size-5'
+        case 'xl':
+            return 'size-6'
+        case '2xl':
+            return 'size-7'
+        case '3xl':
+            return 'size-8'
+        case 'md':
+        default:
+            return 'size-4'
+    }
+}
 
 function useCarousel() {
     const context = React.useContext(CarouselContext)
@@ -125,7 +147,7 @@ function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
     const { carouselRef, orientation } = useCarousel()
 
     return (
-        <div ref={carouselRef} className="overflow-hidden" data-slot="carousel-content">
+        <div ref={carouselRef} className="overflow-hidden rounded-[inherit]" data-slot="carousel-content">
             <div className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)} {...props} />
         </div>
     )
@@ -147,7 +169,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
     )
 }
 
-function CarouselPrevious({ className, variant = 'outline', size = 'icon', ...props }: React.ComponentProps<typeof Button>) {
+function CarouselPrevious({ className, variant = 'outline', size = 'icon', iconSize = 'md', ...props }: CarouselControlProps) {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
@@ -164,13 +186,13 @@ function CarouselPrevious({ className, variant = 'outline', size = 'icon', ...pr
             onClick={scrollPrev}
             {...props}
         >
-            <ArrowLeft />
+            <ChevronLeft className={getIconSizeClass(iconSize)} />
             <span className="sr-only">Previous slide</span>
         </Button>
     )
 }
 
-function CarouselNext({ className, variant = 'outline', size = 'icon', ...props }: React.ComponentProps<typeof Button>) {
+function CarouselNext({ className, variant = 'outline', size = 'icon', iconSize = 'md', ...props }: CarouselControlProps) {
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
     return (
@@ -187,7 +209,7 @@ function CarouselNext({ className, variant = 'outline', size = 'icon', ...props 
             onClick={scrollNext}
             {...props}
         >
-            <ArrowRight />
+            <ChevronRight className={getIconSizeClass(iconSize)} />
             <span className="sr-only">Next slide</span>
         </Button>
     )
