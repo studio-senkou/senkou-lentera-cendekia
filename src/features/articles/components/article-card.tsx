@@ -9,10 +9,10 @@ interface ArticleCardProps {
 
 export const ArticleCard = ({ article }: ArticleCardProps) => {
     return (
-        <article className="group flex flex-col md:flex-row gap-6 py-8 border-b border-neutral-light last:border-0">
+        <article className="group flex flex-col md:flex-row gap-6 py-8 border-b border-border-default last:border-0">
             <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-2 text-sm text-neutral-base">
-                    <div className="relative w-6 h-6 rounded-full overflow-hidden bg-neutral-lighter">
+                    <div className="relative w-6 h-6 rounded-full overflow-hidden bg-[#F2F2F2]">
                          <Image 
                             src={`https://ui-avatars.com/api/?name=${article.author?.name || 'Admin'}&background=f2f2f2&color=242424`} 
                             alt={article.author?.name || 'Author'}
@@ -20,11 +20,11 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
                             className="object-cover"
                          />
                     </div>
-                    <span className="text-neutral-dark">{article.author?.name || 'Lentera Cendekia'}</span>
+                    <span className="text-text-secondary">{article.author?.name || 'Lentera Cendekia'}</span>
                 </div>
                 
                 <Link href={`/articles/${article.id}`} className="block">
-                    <h2 className="text-xl font-bold text-neutral-darkest group-hover:underline leading-snug mb-2">
+                    <h2 className="text-xl font-bold text-text-heading group-hover:underline leading-snug mb-2 font-serif">
                         {article.title}
                     </h2>
                 </Link>
@@ -40,7 +40,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
                 </div>
             </div>
 
-            <Link href={`/articles/${article.id}`} className="relative w-full md:w-40 h-32 md:h-28 bg-neutral-lighter rounded overflow-hidden shrink-0">
+            <Link href={`/articles/${article.id}`} className="relative w-full md:w-40 h-32 md:h-28 bg-[#F2F2F2] rounded overflow-hidden shrink-0">
                 <Image
                     src={`https://picsum.photos/seed/${article.id}/400/300`} 
                     alt={article.title}

@@ -58,7 +58,7 @@ Feature.Content = function FeatureContent({ children, className, ...props }: Com
 
 Feature.Title = function FeatureTitle({ children, className, ...props }: ComponentProps<'h1'> & FeatureTitleProps) {
     return (
-        <h1 className={cn('text-3xl lg:text-4xl max-w-2xl font-medium text-neutral-darkest leading-snug lg:leading-tight', className)} {...props}>
+        <h1 className={cn('text-3xl lg:text-4xl max-w-2xl font-medium text-text-heading leading-snug lg:leading-tight font-serif', className)} {...props}>
             {children}
         </h1>
     )
@@ -66,7 +66,7 @@ Feature.Title = function FeatureTitle({ children, className, ...props }: Compone
 
 Feature.Description = function FeatureDescription({ children, className, ...props }: ComponentProps<'p'> & FeatureDescriptionProps) {
     return (
-        <p className={cn('max-w-2xl text-lg text-neutral-dark mt-3', className)} {...props}>
+        <p className={cn('max-w-2xl text-lg text-text-secondary mt-3', className)} {...props}>
             {children}
         </p>
     )
@@ -91,8 +91,8 @@ Feature.Plans = function FeaturePlans({ children, className, ...props }: Compone
 Feature.Plan = function FeaturePlan({ title, description, className, ...props }: ComponentProps<'div'> & FeaturePlanProps) {
     return (
         <div className={cn('mt-4', className)} {...props}>
-            <h2 className="text-xl font-semibold text-neutral-dark">{title}</h2>
-            <p className="text-base text-neutral-dark mt-1">{description}</p>
+            <h2 className="text-xl font-semibold text-text-secondary font-serif">{title}</h2>
+            <p className="text-base text-text-secondary mt-1">{description}</p>
         </div>
     )
 }

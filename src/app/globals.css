@@ -20,8 +20,9 @@
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --font-sans: var(--font-inter);
+    --font-serif: var(--font-eb-garamond);
+    --font-mono: 'SF Mono', 'Courier New', monospace;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -53,45 +54,38 @@
     --color-card: var(--card);
 
     /* Define Custom Colors */
-    --color-neutral-lightest: var(--color-neutral-lightest);
-    --color-neutral-lighter: var(--color-neutral-lighter);
-    --color-neutral-light: var(--color-neutral-light);
-    --color-neutral-base: var(--color-neutral-base);
-    --color-neutral-dark: var(--color-neutral-dark);
-    --color-neutral-darker: var(--color-neutral-darker);
-    --color-neutral-darkest: var(--color-neutral-darkest);
-    --color-bright-sun-lightest: var(--color-bright-sun-lightest);
-    --color-bright-sun-lighter: var(--color-bright-sun-lighter);
-    --color-bright-sun-light: var(--color-bright-sun-light);
-    --color-bright-sun-base: var(--color-bright-sun-base);
-    --color-bright-sun-dark: var(--color-bright-sun-dark);
-    --color-bright-sun-darker: var(--color-bright-sun-darker);
-    --color-bright-sun-darkest: var(--color-bright-sun-darkest);
-    --color-yellow-orange-lightest: var(--color-yellow-orange-lightest);
-    --color-yellow-orange-lighter: var(--color-yellow-orange-lighter);
-    --color-yellow-orange-light: var(--color-yellow-orange-light);
-    --color-yellow-orange-base: var(--color-yellow-orange-base);
-    --color-yellow-orange-dark: var(--color-yellow-orange-dark);
-    --color-yellow-orange-darker: var(--color-yellow-orange-darker);
-    --color-yellow-orange-darkest: var(--color-yellow-orange-darkest);
-    --color-downy-lightest: var(--color-downy-lightest);
-    --color-downy-lighter: var(--color-downy-lighter);
-    --color-downy-light: var(--color-downy-light);
-    --color-downy-base: var(--color-downy-base);
-    --color-downy-dark: var(--color-downy-dark);
-    --color-downy-darker: var(--color-downy-darker);
-    --color-downy-darkest: var(--color-downy-darkest);
+    --color-deep-navy: #101828;
+    --color-lentera-orange: #FF5C06;
+    --color-learning-blue: #155DEE;
+    --color-ivory-bg: #FFF8EE;
+    --color-white-surface: #FFFFFF;
 
-    --radius-sm: calc(var(--radius) - 4px);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 4px);
+    --color-text-primary: #0B0B0B;
+    --color-text-heading: #101828;
+    --color-text-secondary: #667085;
+    --color-text-muted: #98A2B3;
+
+    --color-success: #16A34A;
+    --color-warning: #F59E0B;
+    --color-error: #DC2626;
+    --color-info: #155DEE;
+
+    --color-border-default: rgba(16, 24, 40, 0.08);
+    --color-border-strong: rgba(16, 24, 40, 0.16);
+
+    --shadow-level-1: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-level-2: 0 6px 20px rgba(0,0,0,0.08);
+    --shadow-level-3: 0 12px 32px rgba(0,0,0,0.12);
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
 }
 
 :root {
     --radius: 0.625rem;
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
+    --background: #FFF8EE;
+    --foreground: #0B0B0B;
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
@@ -130,33 +124,6 @@
     --color-neutral-dark: #4a4a4a;
     --color-neutral-darker: #242424;
     --color-neutral-darkest: #121212;
-
-    /* Subtle Yellow Accent - Used Sparingly */
-    --color-bright-sun-lightest: #fffdf7;
-    --color-bright-sun-lighter: #fff8e1;
-    --color-bright-sun-light: #ffecb3;
-    --color-bright-sun-base: #ffc107;
-    --color-bright-sun-dark: #ffa000;
-    --color-bright-sun-darker: #ff8f00;
-    --color-bright-sun-darkest: #ff6f00;
-
-    /* Warm Accent */
-    --color-yellow-orange-lightest: #fff8e1;
-    --color-yellow-orange-lighter: #ffecb3;
-    --color-yellow-orange-light: #ffe082;
-    --color-yellow-orange-base: #ffd54f;
-    --color-yellow-orange-dark: #ffca28;
-    --color-yellow-orange-darker: #ffb300;
-    --color-yellow-orange-darkest: #ffa000;
-
-    /* Teal Accent */
-    --color-downy-lightest: #e0f2f1;
-    --color-downy-lighter: #b2dfdb;
-    --color-downy-light: #80cbc4;
-    --color-downy-base: #4db6ac;
-    --color-downy-dark: #26a69a;
-    --color-downy-darker: #009688;
-    --color-downy-darkest: #00897b;
 }
 
 .dark {

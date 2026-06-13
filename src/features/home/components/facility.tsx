@@ -18,7 +18,7 @@ export interface FacilityContentProps {
 
 export function Facility({ className, children }: FacilityProps) {
     return (
-        <div className={cn('flex flex-col justify-between w-full h-full space-y-4 bg-neutral-lightest rounded-lg lg:p-6 p-4', className)}>
+        <div className={cn('flex flex-col justify-between w-full h-full space-y-4 bg-white-surface rounded-lg lg:p-6 p-4', className)}>
             {children}
         </div>
     )

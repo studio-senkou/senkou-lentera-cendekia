@@ -3,18 +3,16 @@ import { getSupabase } from './supabase'
 
 // Dummy assets for fallback
 const dummyAssets: StaticAssetResponse[] = [
-    { id: 1, asset_name: 'Suasana Belajar', asset_type: 'hero_carousel', asset_url: 'https://picsum.photos/seed/lentera1/1200/600', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-    { id: 2, asset_name: 'Kelas Interaktif', asset_type: 'hero_carousel', asset_url: 'https://picsum.photos/seed/lentera2/1200/600', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-    { id: 3, asset_name: 'Kegiatan Siswa', asset_type: 'hero_carousel', asset_url: 'https://picsum.photos/seed/lentera3/1200/600', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    { id: 1, asset_name: 'Foto Bersama', asset_type: 'hero_carousel', asset_url: 'https://is3.cloudhost.id/lentera-cendekia/static_assets/LANDING_PAGE/GENERATED_FOTO_BERSAMA.webp', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    { id: 2, asset_name: 'Kelas Praktikum Interaktif', asset_type: 'hero_carousel', asset_url: 'https://is3.cloudhost.id/lentera-cendekia/static_assets/LANDING_PAGE/GENERATED_FOTO_PRAKTIKUM.webp', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    { id: 3, asset_name: 'Kegiatan Siswa', asset_type: 'hero_carousel', asset_url: 'https://is3.cloudhost.id/lentera-cendekia/static_assets/LANDING_PAGE/GENERATED_FOTO_BELAJAR.webp', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
 ]
 
 export const getStaticAssets = async (assetType?: string): Promise<StaticAssetResponse[]> => {
     try {
         const supabase = getSupabase()
         
-        // Fallback to dummy assets if Supabase is not configured
         if (!supabase) {
-            console.log('Supabase not configured, using dummy assets')
             return assetType ? dummyAssets.filter(a => a.asset_type === assetType) : dummyAssets
         }
 

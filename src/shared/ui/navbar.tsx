@@ -11,6 +11,7 @@ import { sendWhatsappMessage } from '../utils/contact'
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
     const [activeSection, setActiveSection] = useState('hero')
 
     const navigations = [
@@ -24,7 +25,7 @@ export function Navbar() {
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId)
         if (element) {
-            const offset = 80 // navbar height
+            const offset = 64 // navbar height
             const elementPosition = element.getBoundingClientRect().top
             const offsetPosition = elementPosition + window.pageYOffset - offset
 
@@ -44,9 +45,19 @@ export function Navbar() {
     }
 
     useEffect(() => {
+        let prevScrollPos = window.scrollY
+
         const handleScroll = () => {
-            const scrollPosition = window.scrollY
-            setIsScrolled(scrollPosition > 50)
+            const currentScrollPos = window.scrollY
+            setIsScrolled(currentScrollPos > 50)
+
+            if (prevScrollPos > currentScrollPos) {
+                setIsVisible(true)
+            } else if (currentScrollPos > 100 && currentScrollPos > prevScrollPos) {
+                setIsVisible(false)
+            }
+
+            prevScrollPos = currentScrollPos
 
             const sections = ['hero', 'features', 'blog', 'features-2', 'testimonials', 'teachers']
             const sectionElements = sections.map((id) => document.getElementById(id))
@@ -63,7 +74,7 @@ export function Navbar() {
             }
         }
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll, { passive: true })
         handleScroll()
 
         return () => {
@@ -96,53 +107,60 @@ export function Navbar() {
     }
 
     return (
-        <nav className={`sticky top-0 z-50 border-b border-neutral-light/30 backdrop-blur-lg bg-white/80 transition-all duration-300`}>
-            <div className="container mx-auto flex items-center justify-between px-6 py-4">
-                <NavbarBrand textStyle={getTextStyle()} />
+        <header className="h-[64px] z-50 w-full relative">
+            <nav
+                className={cn(
+                    'fixed top-0 left-0 w-full z-50 h-[64px] border-b border-border-default backdrop-blur-[20px] bg-white/90 transition-transform duration-300',
+                    isVisible ? 'translate-y-0' : '-translate-y-full'
+                )}
+            >
+                <div className="container mx-auto flex h-full items-center justify-between px-6">
+                    <NavbarBrand textStyle={getTextStyle()} />
 
-                <div className="hidden lg:flex lg:items-center space-x-6">
-                    {navigations.map((nav) => (
-                        <NavbarLink key={nav.name} href={nav.href} textStyle={getTextStyle()} onClick={(e) => handleNavClick(e, nav)}>
-                            {nav.name}
-                        </NavbarLink>
-                    ))}
-                    <Button variant="primary" className="text-lg px-6 py-5" onClick={sendWhatsappMessage}>
-                        Gabung
-                    </Button>
-                </div>
-
-                <button
-                    onClick={toggleMenu}
-                    className="lg:hidden p-2 rounded-md hover:bg-neutral-lighter/50 transition-colors"
-                    aria-label="Toggle menu"
-                >
-                    {isOpen ? <X size={24} className={getTextStyle()} /> : <Menu size={24} className={getTextStyle()} />}
-                </button>
-            </div>
-
-            {isOpen && (
-                <div className={cn('lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-lighter/50', getNavbarStyle())}>
-                    <div className="container mx-auto px-6 py-4 space-y-4">
+                    <div className="hidden lg:flex lg:items-center space-x-8">
                         {navigations.map((nav) => (
-                            <NavbarMobileLink key={nav.name} href={nav.href} onClick={(e) => handleNavClick(e, nav)}>
+                            <NavbarLink key={nav.name} href={nav.href} onClick={(e) => handleNavClick(e, nav)}>
                                 {nav.name}
-                            </NavbarMobileLink>
+                            </NavbarLink>
                         ))}
-                        <Button variant="primary" className="w-full text-lg px-6 py-3" onClick={sendWhatsappMessage}>
-                            Join Now
+                        <Button variant="primary" size="sm" onClick={sendWhatsappMessage}>
+                            Gabung
                         </Button>
                     </div>
+
+                    <button
+                        onClick={toggleMenu}
+                        className="lg:hidden p-2 rounded-md hover:bg-neutral-lighter/50 transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X size={24} className={getTextStyle()} /> : <Menu size={24} className={getTextStyle()} />}
+                    </button>
                 </div>
-            )}
-        </nav>
+
+                {isOpen && (
+                    <div className={cn('lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-lighter/50', getNavbarStyle())}>
+                        <div className="container mx-auto px-6 py-4 space-y-4">
+                            {navigations.map((nav) => (
+                                <NavbarMobileLink key={nav.name} href={nav.href} onClick={(e) => handleNavClick(e, nav)}>
+                                    {nav.name}
+                                </NavbarMobileLink>
+                            ))}
+                            <Button variant="primary" className="w-full text-sm h-10 px-6 py-3" onClick={sendWhatsappMessage}>
+                                Gabung
+                            </Button>
+                        </div>
+                    </div>
+                )}
+            </nav>
+        </header>
     )
 }
 
-export function NavbarBrand({ textStyle = 'text-neutral-darkest' }: { textStyle?: string }) {
+export function NavbarBrand({ textStyle = 'text-text-heading' }: { textStyle?: string }) {
     return (
         <div className={`flex items-center gap-3 text-xl font-medium transition-colors duration-300 ${textStyle}`}>
-            <Image src="/logo.png" alt="Lentera Cendekia Logo" width={150} height={40} className="h-10 w-auto" />
-            Lentera Cendekia
+            <Image src="/logo.png" alt="Lentera Cendekia Logo" width={150} height={40} className="h-8 w-auto object-contain" />
+            <span className="font-serif">Lentera Cendekia</span>
         </div>
     )
 }
@@ -150,16 +168,14 @@ export function NavbarBrand({ textStyle = 'text-neutral-darkest' }: { textStyle?
 export function NavbarLink({
     href,
     children,
-    textStyle = 'text-neutral-800',
     onClick,
 }: {
     href: string
     children: React.ReactNode
-    textStyle?: string
     onClick?: (e: React.MouseEvent) => void
 }) {
     return (
-        <Link href={href} onClick={onClick} className={`text-lg hover:opacity-70 transition-all duration-300 ${textStyle}`}>
+        <Link href={href} onClick={onClick} className={`text-sm font-medium hover:text-text-heading transition-colors duration-300 relative after:absolute after:-bottom-[21px] after:left-0 after:w-full after:h-[2px] after:bg-lentera-orange after:opacity-0 hover:after:opacity-100 after:transition-opacity`}>
             {children}
         </Link>
     )
@@ -167,7 +183,7 @@ export function NavbarLink({
 
 export function NavbarMobileLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: (e: React.MouseEvent) => void }) {
     return (
-        <Link href={href} onClick={onClick} className="block text-lg text-neutral-800 hover:text-neutral-600 transition-colors py-2">
+        <Link href={href} onClick={onClick} className="block text-sm font-medium text-text-secondary hover:text-text-heading transition-colors py-2">
             {children}
         </Link>
     )

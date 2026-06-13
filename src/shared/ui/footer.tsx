@@ -36,16 +36,16 @@ interface FooterContactProps extends ComponentProps<'div'> {
 export function FooterContact({ className, ...props }: FooterContactProps) {
     return (
         <div className={cn('flex flex-col items-start space-y-4', className)} {...props}>
-            <h2 className="text-2xl font-medium">Lentera Cendekia</h2>
+            <h2 className="text-2xl font-medium font-serif">Lentera Cendekia</h2>
             <div>
                 <h4 className="text-md font-semibold mb-2">Alamat:</h4>
-                <p className="text-sm text-neutral-dark max-w-sm">
+                <p className="text-sm text-text-secondary max-w-sm">
                     Jl. Gubeng Kertajaya IX B Dalam Dalam No.15, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286
                 </p>
             </div>
             <div>
                 <h4 className="text-md font-semibold mb-2">Kontak:</h4>
-                <p className="text-sm text-neutral-dark">(021) 123-4567 / lbblenteracendekia@gmail.com</p>
+                <p className="text-sm text-text-secondary">(021) 123-4567 / lbblenteracendekia@gmail.com</p>
             </div>
         </div>
     )
@@ -63,7 +63,7 @@ export function FooterLinksGroup({ title, links, className, ...props }: FooterLi
             <ul className="space-y-2">
                 {links.map((link, index) => (
                     <li key={index}>
-                        <a href={link.href} className="text-sm text-neutral-dark hover:text-neutral-darkest transition-colors">
+                        <a href={link.href} className="text-sm text-text-secondary hover:text-text-heading transition-colors">
                             {link.label}
                         </a>
                     </li>
@@ -94,7 +94,7 @@ export function FooterSocial({ links = [], className, ...props }: FooterSocialPr
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={link.platform}
-                        className="text-neutral-dark hover:text-neutral-darkest transition-colors"
+                        className="text-text-secondary hover:text-text-heading transition-colors"
                     >
                         {link.platform === 'twitter' && <Twitter size={20} />}
                         {link.platform === 'facebook' && <Facebook size={20} />}
@@ -113,17 +113,17 @@ interface FooterBottomProps extends ComponentProps<'div'> {
 
 export function FooterBottom({ className, ...props }: FooterBottomProps) {
     return (
-        <div className={cn('border-t border-neutral-lighter py-6', className)} {...props}>
+        <div className={cn('border-t border-border-default py-6', className)} {...props}>
             <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-neutral-dark">&copy; {new Date().getFullYear()} Lentera Cendekia. All rights reserved.</p>
+                <p className="text-sm text-text-secondary">&copy; {new Date().getFullYear()} Lentera Cendekia. All rights reserved.</p>
                 <div className="flex space-x-6">
-                    <a href="/terms" className="text-sm text-neutral-dark hover:text-neutral-darkest">
+                    <a href="/terms" className="text-sm text-text-secondary hover:text-text-heading">
                         Terms of Service
                     </a>
-                    <a href="/privacy" className="text-sm text-neutral-dark hover:text-neutral-darkest">
+                    <a href="/privacy" className="text-sm text-text-secondary hover:text-text-heading">
                         Privacy Policy
                     </a>
-                    <a href="/faq" className="text-sm text-neutral-dark hover:text-neutral-darkest">
+                    <a href="/faq" className="text-sm text-text-secondary hover:text-text-heading">
                         FAQ
                     </a>
                 </div>
@@ -134,15 +134,16 @@ export function FooterBottom({ className, ...props }: FooterBottomProps) {
 
 export function FooterBrand({ className, ...props }: ComponentProps<'div'>) {
     return (
-        <div className={cn('text-2xl font-medium', className)} {...props}>
-            Lentera Cendekia
+        <div className={cn('flex items-center gap-2', className)} {...props}>
+            <Image src="/logo.png" alt="Lentera Cendekia Logo" width={120} height={32} className="h-8 w-auto object-contain" />
+            <span className="font-serif text-xl font-bold text-text-heading">Lentera Cendekia</span>
         </div>
     )
 }
 
 export function FooterCopyright({ className, ...props }: ComponentProps<'div'>) {
     return (
-        <div className={cn('text-sm text-neutral-600', className)} {...props}>
+        <div className={cn('text-sm text-text-heading', className)} {...props}>
             &copy; {new Date().getFullYear()} Lentera Cendekia. All rights reserved.
         </div>
     )
@@ -150,7 +151,7 @@ export function FooterCopyright({ className, ...props }: ComponentProps<'div'>) 
 
 export function FooterInformation({ children, className, ...props }: ComponentProps<'div'> & { children?: ReactNode }) {
     return (
-        <div className={cn('flex justify-between border-b border-neutral-lighter dark:border-neutral-darkest pb-6', className)} {...props}>
+        <div className={cn('flex justify-between border-b border-border-default dark:border-neutral-darkest pb-6', className)} {...props}>
             {children}
         </div>
     )
@@ -190,11 +191,11 @@ export function FooterOverlayContact({}) {
                 <MessageCircle size={18} />
                 <span className="text-sm">Hubungi Kami</span>
             </button>
-            <div className="absolute bottom-full right-0 mb-2 w-64 bg-white shadow-lg rounded-md pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
+            <div className="absolute bottom-full right-0 mb-2 w-64 bg-white-surface shadow-lg rounded-md pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
                 <div className="flex items-start gap-2 p-3">
                     <div>
-                        <p className="text-sm text-neutral-800 font-medium">Butuh bantuan?</p>
-                        <p className="text-xs text-neutral-600">Hubungi kami lewat chat WhatsApp!</p>
+                        <p className="text-sm text-text-secondary font-medium">Butuh bantuan?</p>
+                        <p className="text-xs text-text-heading">Hubungi kami lewat chat WhatsApp!</p>
                     </div>
                 </div>
             </div>

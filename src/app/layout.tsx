@@ -1,11 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, EB_Garamond } from 'next/font/google'
 import './globals.css'
 import { TopLoader } from '@/shared/ui/top-loader'
 import { Suspense } from 'react'
 
 const inter = Inter({
     variable: '--font-inter',
+    subsets: ['latin'],
+})
+
+const ebGaramond = EB_Garamond({
+    variable: '--font-eb-garamond',
     subsets: ['latin'],
 })
 
@@ -21,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${inter.variable} antialiased`}>
+            <body className={`${inter.variable} ${ebGaramond.variable} antialiased font-sans`}>
                 <Suspense fallback={null}>
                     <TopLoader />
                 </Suspense>

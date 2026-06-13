@@ -11,11 +11,6 @@ import { useCallback } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { sendWhatsappMessage } from '@/shared/utils/contact'
 
-const dummyAssets = [
-    { id: 1, name: 'Suasana Belajar', url: 'https://picsum.photos/seed/lentera1/1200/600' },
-    { id: 2, name: 'Kelas Interaktif', url: 'https://picsum.photos/seed/lentera2/1200/600' },
-    { id: 3, name: 'Kegiatan Siswa', url: 'https://picsum.photos/seed/lentera3/1200/600' },
-]
 
 export interface HeroProps {
     className?: string
@@ -24,20 +19,20 @@ export interface HeroProps {
 
 export function Hero({ className, assets }: HeroProps) {
     const hasRealAssets = assets && assets.length > 0
-    const displayAssets = hasRealAssets ? assets : dummyAssets
+    const displayAssets = hasRealAssets ? assets : []
 
     const handleContinueLearning = useCallback(() => {
         document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
     }, [])
 
     return (
-        <div className={cn('bg-white', className)}>
+        <div className={cn('bg-white-surface', className)}>
             <div className="container mx-auto py-12 lg:py-24">
                 <div className="max-w-3xl mx-auto text-center px-4 lg:px-6">
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-neutral-darkest leading-tight tracking-tight mb-4 lg:mb-6">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-text-heading leading-tight tracking-tight mb-4 lg:mb-6">
                         Tempat Belajar yang Menyenangkan dan Bermakna
                     </h1>
-                    <p className="text-lg lg:text-xl text-neutral-dark leading-relaxed mb-6 lg:mb-8 max-w-2xl mx-auto">
+                    <p className="text-lg lg:text-xl text-text-secondary leading-relaxed mb-6 lg:mb-8 max-w-2xl mx-auto">
                         Lentera Cendekia hadir untuk mendampingi perjalanan akademik anak Anda dengan pendekatan personal dan metode yang terbukti
                         efektif.
                     </p>
@@ -68,7 +63,7 @@ export function Hero({ className, assets }: HeroProps) {
                         <CarouselContent>
                             {displayAssets.map((asset, index) => (
                                 <CarouselItem key={index}>
-                                    <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
+                                    <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
                                         <Image
                                             src={
                                                 hasRealAssets

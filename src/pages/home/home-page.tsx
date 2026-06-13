@@ -14,6 +14,7 @@ import {
 } from '@/features/home/components/testimony'
 import { teachers } from '@/entities/teachers'
 import { TeacherCard, TeacherContent, TeacherDescription, TeacherImage, TeacherSocial, TeacherTitle } from '@/features/home/components/teacher'
+import { TeacherPromotion } from '@/features/home/components/teacher-promotion'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion'
 import { faqs } from '@/entities/faqs'
 import { Footer, FooterSection, FooterContact, FooterLinksGroup, FooterSocial, FooterBottom, FooterOverlayContact } from '@/shared/ui/footer'
@@ -35,13 +36,13 @@ export default async function HomePage() {
 
     return (
         <HomeMotion>
-            <div className="relative overflow-hidden bg-white">
+            <div className="relative overflow-hidden bg-white-surface">
                 <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-                    <div data-gsap-parallax className="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-bright-sun-light/35 blur-3xl" />
-                    <div data-gsap-parallax className="absolute right-[-5rem] top-96 h-96 w-96 rounded-full bg-downy-light/25 blur-3xl" />
+                    <div data-gsap-parallax className="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-lentera-orange/35 blur-3xl" />
+                    <div data-gsap-parallax className="absolute right-[-5rem] top-96 h-96 w-96 rounded-full bg-learning-blue/25 blur-3xl" />
                     <div
                         data-gsap-parallax
-                        className="absolute left-1/2 top-[48rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-yellow-orange-light/20 blur-3xl"
+                        className="absolute left-1/2 top-[48rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-deep-navy/20 blur-3xl"
                     />
                 </div>
 
@@ -154,7 +155,7 @@ export default async function HomePage() {
                                 />
                             </Facility>
                         </div>
-                        <div className="relative overflow-hidden flex items-end justify-center w-full h-[500px] md:h-full bg-cover bg-center rounded-xl bg-[url('/images/hero.png')] border-[1px] border-neutral-20">
+                        <div className="relative overflow-hidden flex items-end justify-center w-full h-[500px] md:h-full bg-cover bg-center rounded-xl bg-[url('/images/hero.png')] border-[1px] border-border-default">
                             <Image
                                 src="/images/about__one.svg"
                                 alt="mockup1"
@@ -194,8 +195,8 @@ export default async function HomePage() {
                     <section className="my-12 px-4 py-16 lg:py-20">
                         <div className="container mx-auto">
                             <div className="mb-8 max-w-2xl lg:mb-12">
-                                <h2 className="text-3xl font-medium text-neutral-darkest lg:text-4xl">Kata Mereka Tentang Kami</h2>
-                                <p className="mt-4 text-base leading-relaxed text-neutral-dark lg:text-lg">
+                                <h2 className="text-3xl font-medium text-text-heading lg:text-4xl font-serif">Kata Mereka Tentang Kami</h2>
+                                <p className="mt-4 text-base leading-relaxed text-text-secondary lg:text-lg">
                                     Jangan hanya percaya kata kami. Dengarkan langsung pengalaman para siswa dan orang tua yang telah bergabung dengan
                                     keluarga besar Lentera Cendekia.
                                 </p>
@@ -284,11 +285,11 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <div id="teachers" className="relative z-10 bg-bright-sun-lightest py-12 lg:py-24 px-4 lg:px-0" data-gsap-reveal>
+                <div id="teachers" className="relative z-10 bg-ivory-bg py-12 lg:py-24 px-4 lg:px-0" data-gsap-reveal>
                     <div className="container mx-auto">
                         <div className="flex flex-col items-center text-center mb-8 lg:mb-12">
-                            <h2 className="text-3xl lg:text-4xl font-medium text-neutral-darkest mb-4">Temui Pengajar Terbaik Kami</h2>
-                            <p className="text-lg text-neutral-dark w-full max-w-3xl mx-auto transition-transform">
+                            <h2 className="text-3xl lg:text-4xl font-medium text-text-heading mb-4 font-serif">Temui Pengajar Terbaik Kami</h2>
+                            <p className="text-lg text-text-secondary w-full max-w-3xl mx-auto transition-transform">
                                 Tim pengajar kami yang berpengalaman berkomitmen untuk memberikan pengalaman belajar terbaik bagi siswa.
                             </p>
                         </div>
@@ -305,13 +306,14 @@ export default async function HomePage() {
                                 </TeacherCard>
                             ))}
                         </div>
+                        <TeacherPromotion />
                     </div>
                 </div>
 
                 <div className="container mx-auto my-12 lg:my-24 px-4 lg:px-8 relative z-10" data-gsap-reveal>
                     <div className="flex flex-col items-start mb-8 lg:mb-12">
-                        <h2 className="text-3xl lg:text-4xl font-medium text-neutral-darkest mb-4">Pertanyaan Umum (FAQ)</h2>
-                        <p className="text-lg text-neutral-dark w-full max-w-3xl transition-transform">
+                        <h2 className="text-3xl lg:text-4xl font-medium text-text-heading mb-4 font-serif">Pertanyaan Umum (FAQ)</h2>
+                        <p className="text-lg text-text-secondary w-full max-w-3xl transition-transform">
                             Temukan jawaban atas pertanyaan umum tentang layanan bimbingan belajar, program, dan lainnya.
                         </p>
                     </div>
@@ -326,8 +328,8 @@ export default async function HomePage() {
                     </Accordion>
 
                     <div className="flex flex-col items-start mt-12">
-                        <h2 className="text-2xl font-medium text-neutral-darkest mb-4">Masih punya pertanyaan?</h2>
-                        <p className="text-lg text-neutral-dark w-full max-w-3xl transition-transform">
+                        <h2 className="text-2xl font-medium text-text-heading mb-4 font-serif">Masih punya pertanyaan?</h2>
+                        <p className="text-lg text-text-secondary w-full max-w-3xl transition-transform">
                             Kami siap membantu! Jika kamu memiliki pertanyaan lain atau butuh informasi lebih lanjut, jangan ragu untuk menghubungi
                             kami.
                         </p>

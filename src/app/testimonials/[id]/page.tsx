@@ -62,13 +62,13 @@ export default async function TestimonyDetailPage({ params }: TestimonyDetailPag
                     </div>
 
                     {/* Testimony Text */}
-                    <blockquote className="text-xl md:text-2xl font-serif text-neutral-darkest leading-relaxed text-center mb-12">
+                    <blockquote className="text-xl md:text-2xl font-serif text-text-heading leading-relaxed text-center mb-12">
                         &ldquo;{testimony.testimony_text}&rdquo;
                     </blockquote>
 
                     {/* Author Info */}
-                    <div className="flex flex-col items-center gap-4 pt-8 border-t border-neutral-light">
-                        <div className="relative w-20 h-20 rounded-full overflow-hidden bg-neutral-lighter">
+                    <div className="flex flex-col items-center gap-4 pt-8 border-t border-border-default">
+                        <div className="relative w-20 h-20 rounded-full overflow-hidden bg-[#F2F2F2]">
                             <Image
                                 src={
                                     testimony.testimoner_photo ||
@@ -80,7 +80,7 @@ export default async function TestimonyDetailPage({ params }: TestimonyDetailPag
                             />
                         </div>
                         <div className="text-center">
-                            <div className="font-semibold text-lg text-neutral-darkest">{testimony.testimoner_name}</div>
+                            <div className="font-semibold text-lg text-text-heading">{testimony.testimoner_name}</div>
                             {testimony.testimoner_current_position && (
                                 <div className="text-neutral-base">{testimony.testimoner_current_position}</div>
                             )}

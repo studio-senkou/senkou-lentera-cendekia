@@ -55,11 +55,11 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
                 {/* Title & Meta */}
                 <header className="container mx-auto px-4 lg:px-0 max-w-2xl mb-10">
-                    <h1 className="text-3xl md:text-4xl font-serif font-bold text-neutral-darkest leading-tight mb-6">{article.title}</h1>
+                    <h1 className="text-3xl md:text-4xl font-serif font-bold text-text-heading leading-tight mb-6">{article.title}</h1>
 
                     {/* Author & Meta Info */}
-                    <div className="flex items-center gap-3 pb-6 border-b border-neutral-light">
-                        <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-lighter">
+                    <div className="flex items-center gap-3 pb-6 border-b border-border-default">
+                        <div className="relative w-10 h-10 rounded-full overflow-hidden bg-[#F2F2F2]">
                             <Image
                                 src={`https://ui-avatars.com/api/?name=${article.author?.name || 'Admin'}&background=f2f2f2&color=242424&size=128`}
                                 alt={article.author?.name || 'Author'}
@@ -68,7 +68,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
                             />
                         </div>
                         <div>
-                            <div className="font-medium text-neutral-darkest">{article.author?.name || 'Lentera Cendekia'}</div>
+                            <div className="font-medium text-text-heading">{article.author?.name || 'Lentera Cendekia'}</div>
                             <div className="flex items-center gap-2 text-sm text-neutral-base">
                                 <span>{publishDate}</span>
                                 <span>·</span>
@@ -80,7 +80,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
                 {/* Featured Image */}
                 <div className="container mx-auto px-4 lg:px-0 max-w-3xl mb-10">
-                    <div className="relative w-full h-[300px] md:h-[400px] bg-neutral-lighter rounded overflow-hidden">
+                    <div className="relative w-full h-[300px] md:h-[400px] bg-[#F2F2F2] rounded overflow-hidden">
                         <Image src={`https://picsum.photos/seed/${article.id}/1200/800`} alt={article.title} fill className="object-cover" priority />
                     </div>
                 </div>
@@ -92,9 +92,9 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
                 {/* Author Bio */}
                 <div className="container mx-auto px-4 lg:px-0 max-w-2xl mb-16">
-                    <div className="border-t border-neutral-light pt-8">
+                    <div className="border-t border-border-default pt-8">
                         <div className="flex items-start gap-4">
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden bg-neutral-lighter shrink-0">
+                            <div className="relative w-12 h-12 rounded-full overflow-hidden bg-[#F2F2F2] shrink-0">
                                 <Image
                                     src={`https://ui-avatars.com/api/?name=${article.author?.name || 'Admin'}&background=f2f2f2&color=242424&size=128`}
                                     alt={article.author?.name || 'Author'}
@@ -104,7 +104,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
                             </div>
                             <div>
                                 <p className="text-xs text-neutral-base uppercase tracking-wide mb-1">Ditulis oleh</p>
-                                <h3 className="text-lg font-bold text-neutral-darkest mb-1">{article.author?.name || 'Lentera Cendekia'}</h3>
+                                <h3 className="text-lg font-bold text-text-heading mb-1 font-serif">{article.author?.name || 'Lentera Cendekia'}</h3>
                                 <p className="text-neutral-base text-sm leading-relaxed">Berbagi pengetahuan dan pengalaman seputar pendidikan.</p>
                             </div>
                         </div>

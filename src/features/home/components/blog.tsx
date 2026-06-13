@@ -51,7 +51,7 @@ Blog.Header = function BlogHeader({ children, className, ...props }: ComponentPr
 
 Blog.Title = function BlogTitle({ children, className, ...props }: ComponentProps<'h2'> & BlogTitleProps) {
     return (
-        <h2 className={cn('text-3xl lg:text-4xl font-medium text-neutral-darkest mb-4 leading-relaxed max-w-2xl mx-auto', className)} {...props}>
+        <h2 className={cn('text-3xl lg:text-4xl font-medium text-text-heading mb-4 leading-relaxed max-w-2xl mx-auto font-serif', className)} {...props}>
             {children}
         </h2>
     )
@@ -59,7 +59,7 @@ Blog.Title = function BlogTitle({ children, className, ...props }: ComponentProp
 
 Blog.Description = function BlogDescription({ children, className, ...props }: ComponentProps<'p'> & BlogDescriptionProps) {
     return (
-        <p className={cn('text-lg text-neutral-dark max-w-3xl mx-auto', className)} {...props}>
+        <p className={cn('text-lg text-text-secondary max-w-3xl mx-auto', className)} {...props}>
             {children}
         </p>
     )
@@ -77,12 +77,12 @@ Blog.Card = function BlogCard({ image, title, description, imageAlt, className, 
     return (
         <div
             className={cn(
-                'group bg-white rounded-lg overflow-hidden border border-neutral-light hover:border-neutral-base transition-colors',
+                'group bg-white-surface rounded-lg overflow-hidden border border-border-default shadow-level-1 hover:shadow-level-2 hover:border-[#101828]/12 transition-all',
                 className
             )}
             {...props}
         >
-            <div className="relative w-full h-96 bg-neutral-lighter overflow-hidden">
+            <div className="relative w-full h-96 bg-[#F2F2F2] overflow-hidden">
                 <Image
                     src={image}
                     alt={imageAlt || title}
@@ -92,7 +92,7 @@ Blog.Card = function BlogCard({ image, title, description, imageAlt, className, 
                 />
             </div>
             <div className="p-5">
-                <h3 className="text-lg font-semibold text-neutral-darkest mb-2 group-hover:underline">{title}</h3>
+                <h3 className="text-lg font-semibold text-text-heading mb-2 group-hover:underline font-serif">{title}</h3>
                 <p className="text-neutral-base text-sm leading-relaxed line-clamp-2">{description}</p>
             </div>
         </div>

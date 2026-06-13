@@ -21,7 +21,7 @@ export function Banner({ className, title, description, children, ...props }: Ba
         >
             <div className="absolute inset-0 bg-black/50 pointer-events-none" />
             <div className="relative z-10 flex flex-col items-start space-y-4">
-                <h1 className="text-3xl font-medium">{title}</h1>
+                <h1 className="text-3xl font-medium font-serif">{title}</h1>
                 <p className="max-w-2xl">{description}</p>
                 <div>{children}</div>
             </div>

@@ -13,8 +13,8 @@ export default async function ArticlesPage() {
         <Fragment>
             <Navbar />
             <main className="container mx-auto min-h-screen pt-24 px-4 lg:px-0">
-                <div className="max-w-2xl mx-auto mb-12 border-b border-neutral-light pb-8">
-                    <h1 className="text-4xl font-serif font-bold text-neutral-darkest mb-4">
+                <div className="max-w-2xl mx-auto mb-12 border-b border-border-default pb-8">
+                    <h1 className="text-4xl font-serif font-bold text-text-heading mb-4">
                         Tulisan
                     </h1>
                     <p className="text-neutral-base text-lg">

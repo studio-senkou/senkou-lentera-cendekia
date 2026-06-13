@@ -72,7 +72,7 @@ function TestimonialsHeader({ children, className, ...props }: ComponentProps<'d
 
 function TestimonialsTitle({ children, className, ...props }: ComponentProps<'h2'> & TestimonialsTitleProps) {
     return (
-        <h2 className={cn('text-4xl font-medium text-neutral-darkest mb-4', className)} {...props}>
+        <h2 className={cn('text-4xl font-medium text-text-heading mb-4 font-serif', className)} {...props}>
             {children}
         </h2>
     )
@@ -80,7 +80,7 @@ function TestimonialsTitle({ children, className, ...props }: ComponentProps<'h2
 
 function TestimonialsDescription({ children, className, ...props }: ComponentProps<'p'> & TestimonialsDescriptionProps) {
     return (
-        <p className={cn('text-lg text-neutral-dark max-w-3xl mx-auto', className)} {...props}>
+        <p className={cn('text-lg text-text-secondary max-w-3xl mx-auto', className)} {...props}>
             {children}
         </p>
     )
@@ -113,7 +113,7 @@ export function TestimonyCard({ children, className, ...props }: ComponentProps<
     return (
         <div
             className={cn(
-                'h-full rounded-2xl border border-neutral-light bg-white p-5 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5',
+                'h-full rounded-lg border border-border-default bg-white-surface p-6 shadow-level-1 hover:shadow-level-2 hover:border-[#101828]/12 transition-all flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5',
                 className
             )}
             {...props}
@@ -145,7 +145,7 @@ function TestimonyImage({ src, alt, className, ...props }: ComponentProps<'div'>
     return (
         <div
             className={cn(
-                'relative h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 overflow-hidden rounded-2xl bg-neutral-lighter flex-shrink-0',
+                'relative h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 overflow-hidden rounded-2xl bg-[#F2F2F2] flex-shrink-0',
                 className
             )}
             {...props}
@@ -157,7 +157,7 @@ function TestimonyImage({ src, alt, className, ...props }: ComponentProps<'div'>
 
 function TestimonyQuote({ children, className, ...props }: ComponentProps<'blockquote'> & TestimonyQuoteProps) {
     return (
-        <blockquote className={cn('flex-1 text-sm italic text-neutral-dark leading-relaxed line-clamp-6', className)} {...props}>
+        <blockquote className={cn('flex-1 text-sm italic text-text-secondary leading-relaxed line-clamp-6', className)} {...props}>
             &ldquo;{children}&rdquo;
         </blockquote>
     )
@@ -166,7 +166,7 @@ function TestimonyQuote({ children, className, ...props }: ComponentProps<'block
 function TestimonyAuthor({ name, role, className, ...props }: ComponentProps<'div'> & TestimonyAuthorProps) {
     return (
         <div className={cn('pt-3', className)} {...props}>
-            <p className="font-semibold text-neutral-darkest text-sm">{name}</p>
+            <p className="font-semibold text-text-heading text-sm">{name}</p>
             {role && <p className="text-xs text-neutral-base">{role}</p>}
         </div>
     )

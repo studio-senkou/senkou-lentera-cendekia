@@ -9,9 +9,9 @@ export default function NotFound() {
     <Fragment>
       <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-12">
-        <h1 className="text-6xl md:text-8xl font-serif font-bold text-neutral-darkest mb-4">404</h1>
-        <h2 className="text-2xl md:text-3xl font-medium text-neutral-darkest mb-6">Halaman Tidak Ditemukan</h2>
-        <p className="text-lg text-neutral-dark max-w-md mb-8">
+        <h1 className="text-6xl md:text-8xl font-serif font-bold text-text-heading mb-4">404</h1>
+        <h2 className="text-2xl md:text-3xl font-medium text-text-heading mb-6 font-serif">Halaman Tidak Ditemukan</h2>
+        <p className="text-lg text-text-secondary max-w-md mb-8">
           Maaf, halaman yang Anda cari tidak dapat ditemukan. Mungkin halaman telah dipindahkan atau dihapus.
         </p>
         <Link href="/">

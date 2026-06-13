@@ -33,7 +33,7 @@ export interface TeacherTitleProps extends ComponentProps<'h2'> {
 
 export function TeacherTitle({ className, children, ...props }: TeacherTitleProps) {
     return (
-        <h2 className={cn('text-xl font-medium', className)} {...props}>
+        <h2 className={cn('text-xl font-medium font-serif', className)} {...props}>
             {children}
         </h2>
     )

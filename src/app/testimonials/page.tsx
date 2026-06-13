@@ -31,10 +31,10 @@ export default async function TestimonialsPage() {
             <main className="min-h-screen pt-24 pb-12">
                 {/* Header */}
                 <div className="container mx-auto px-6 mb-16 text-center">
-                    <h1 className="text-4xl md:text-5xl font-serif font-bold text-neutral-darkest mb-6">
+                    <h1 className="text-4xl md:text-5xl font-serif font-bold text-text-heading mb-6">
                         Kata Mereka Tentang Kami
                     </h1>
-                    <p className="text-lg text-neutral-dark max-w-2xl mx-auto">
+                    <p className="text-lg text-text-secondary max-w-2xl mx-auto">
                         Dengarkan langsung pengalaman para siswa dan orang tua yang telah merasakan dampak positif belajar bersama Lentera Cendekia.
                     </p>
                 </div>
