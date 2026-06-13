@@ -13,6 +13,7 @@ function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.
 const AccordionItem = React.forwardRef<React.ElementRef<typeof AccordionPrimitive.Item>, React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>>(
     ({ className, ...props }, ref) => <AccordionPrimitive.Item ref={ref} data-slot="accordion-item" className={cn('border border-border-default', className)} {...props} />
 )
+AccordionItem.displayName = "AccordionItem"
 
 function AccordionTrigger({ className, children, ...props }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
     return (

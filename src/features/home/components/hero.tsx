@@ -65,12 +65,8 @@ export function Hero({ className, assets }: HeroProps) {
                                 <CarouselItem key={index}>
                                     <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
                                         <Image
-                                            src={
-                                                hasRealAssets
-                                                    ? getAssetUrl((asset as StaticAssetResponse).asset_url)
-                                                    : (asset as (typeof dummyAssets)[0]).url
-                                            }
-                                            alt={hasRealAssets ? (asset as StaticAssetResponse).asset_name : (asset as (typeof dummyAssets)[0]).name}
+                                            src={getAssetUrl(asset.asset_url)}
+                                            alt={asset.asset_name}
                                             fill
                                             className="object-cover rounded-lg"
                                             priority={index === 0}

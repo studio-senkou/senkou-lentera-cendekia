@@ -4,6 +4,7 @@ import { cn } from '@/shared/lib/utils'
 import { Facebook, Instagram, Linkedin, MessageCircle, Twitter } from 'lucide-react'
 import type { ComponentProps, ReactNode } from 'react'
 import { sendWhatsappMessage } from '../utils/contact'
+import Image from 'next/image'
 
 interface FooterProps extends ComponentProps<'footer'> {
     children: ReactNode

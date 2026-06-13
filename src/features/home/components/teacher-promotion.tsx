@@ -2,7 +2,7 @@ import { Button } from '@/shared/ui/button'
 import { cn } from '@/shared/lib/utils'
 import { ComponentProps } from 'react'
 
-export interface TeacherPromotionProps extends ComponentProps<'div'> {}
+export type TeacherPromotionProps = ComponentProps<'div'>
 
 export function TeacherPromotion({ className, ...props }: TeacherPromotionProps) {
     return (
