@@ -36,3 +36,12 @@ export interface ArticleResponse {
     created_at: string
     updated_at: string
 }
+
+export type Program = {
+  id: number;
+  image_url: string | null;
+  title: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+};

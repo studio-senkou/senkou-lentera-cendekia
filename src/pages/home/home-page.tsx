@@ -20,6 +20,7 @@ import { faqs } from '@/entities/faqs'
 import { Footer, FooterSection, FooterContact, FooterLinksGroup, FooterSocial, FooterBottom, FooterOverlayContact } from '@/shared/ui/footer'
 import { getTestimonies } from '@/shared/lib/testimony'
 import { getStaticAssets } from '@/shared/lib/asset'
+import { getPrograms } from '@/shared/lib/program'
 import { Facility, FacilityContent, FacilityIcon } from '@/features/home/components/facility'
 import { HomeMotion } from '@/features/home/components/home-motion'
 import { AirVent, FlaskConical, User, Video } from 'lucide-react'
@@ -33,6 +34,7 @@ export default async function HomePage() {
     const testimonies = await getTestimonies()
     const featuredTestimonies = testimonies.slice(0, 10)
     const assets = await getStaticAssets()
+    const programs = await getPrograms()
 
     return (
         <HomeMotion>
@@ -79,36 +81,15 @@ export default async function HomePage() {
                         </BlogComponent.Header>
 
                         <BlogComponent.Cards>
-                            <BlogComponent.Card
-                                data-gsap-card
-                                image="https://is3.cloudhost.id/lentera-cendekia/programs/BIMBINGAN-SD"
-                                title="Bimbingan Belajar SD"
-                                description="Program bimbingan belajar untuk siswa SD yang dirancang untuk membangun fondasi akademik yang kuat sejak dini."
-                            />
-                            <BlogComponent.Card
-                                data-gsap-card
-                                image="https://is3.cloudhost.id/lentera-cendekia/programs/BIMBINGAN-SMP"
-                                title="Bimbingan Belajar SMP"
-                                description="Program bimbingan belajar untuk siswa SMP yang dirancang untuk membangun pemahaman konsep yang kuat."
-                            />
-                            <BlogComponent.Card
-                                data-gsap-card
-                                image="https://is3.cloudhost.id/lentera-cendekia/programs/BIMBINGAN-SMA"
-                                title="Bimbingan Belajar SMA"
-                                description="Program bimbingan belajar untuk siswa SMA yang dirancang untuk mempersiapkan mereka menghadapi tantangan akademik dan ujian masuk perguruan tinggi."
-                            />
-                            <BlogComponent.Card
-                                data-gsap-card
-                                image="https://is3.cloudhost.id/lentera-cendekia/programs/BIMBINGAN-UTBK"
-                                title="Program Intensif UTBK"
-                                description="Program intensif persiapan UTBK yang dirancang untuk membantu siswa meraih skor tinggi dan masuk ke perguruan tinggi impian mereka."
-                            />
-                            <BlogComponent.Card
-                                data-gsap-card
-                                image="https://is3.cloudhost.id/lentera-cendekia/programs/ENLGISH-FOR-KIDS"
-                                title="English for Kids"
-                                description="Program pembelajaran bahasa Inggris untuk anak-anak yang dirancang untuk membangun kemampuan bahasa sejak dini dengan metode yang menyenangkan."
-                            />
+                            {programs.map((program) => (
+                                <BlogComponent.Card
+                                    key={program.id}
+                                    data-gsap-card
+                                    image={program.image_url || ''}
+                                    title={program.title}
+                                    description={program.description}
+                                />
+                            ))}
                         </BlogComponent.Cards>
 
                         <BlogComponent.Actions>
